@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+#monitoring {
+    padding: 0px 0 20px 0;
+    margin: 0;
+    background: linear-gradient(rgba(5, 74, 133, 0.0), rgba(5, 74, 133, 0)), url("../../img/cta-bg.jpg") fixed center center;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    backdrop-filter: blur(10px);
+    background: none;
+    width: 100%;
+}
+
+.container {
+    max-width: 1340px;
+}
+
+.box-item {
+    color: #fff !important;
+    background: linear-gradient(286.58deg, rgba(214, 202, 202, 0.35) 1.75%, rgba(255, 255, 255, 0) 101.04%);
+    filter: drop-shadow(5px 4px 11px rgba(0, 0, 0, 0.25));
+    backdrop-filter: blur(25px);
+    border-radius: 41px;
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 40px;
+    margin: 20px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h3 {
+        font-size: 66px !important;
+        font-weight: 800;
+    }
+    h4 {
+        font-size: 16px !important;
+        font-weight: 800;
+    }
+    p {
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+        margin-top: 15px !important;
+    }
+}
+
+.box-item-color {
+    background: linear-gradient(286.58deg, rgba(170, 8, 8, 0.35) 1.75%, rgba(63, 162, 234, 0) 101.04%) !important;
+}

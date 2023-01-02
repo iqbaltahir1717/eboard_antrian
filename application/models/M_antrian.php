@@ -1,0 +1,94 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+class M_antrian extends CI_Model
+{
+
+    function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function read($limit, $start, $key)
+    {
+        $this->db->select('a.*, b.user_fullname, b.user_name, c.*');
+        $this->db->from('tbl_antrian a');
+        $this->db->join('tbl_user b', 'a.user_id=b.user_id', 'LEFT');
+        $this->db->join('tbl_spesialis c', 'a.spesialis_id=c.spesialis_id', 'LEFT');
+        $this->db->order_by('a.antrian_nomor', 'ASC');
+
+        if ($key != '') {
+            $this->db->like("user_fullname", $key);
+            $this->db->or_like("antrain_kode", $key);
+        }
+
+        if ($limit != "" or $start != "") {
+            $this->db->limit($limit, $start);
+        }
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return null;
+    }
+
+    public function create($data)
+    {
+        $this->db->insert('tbl_antrian', $data);
+    }
+
+    public function update($data)
+    {
+        $this->db->update('tbl_antrian', $data, array('antrian_kode' => $data['antrian_kode']));
+    }
+
+    public function delete($id)
+    {
+        $this->db->delete('tbl_antrian', array('antrian_kode' => $id));
+    }
+
+    public function get($id)
+    {
+        $this->db->where('riwayat_id', $id);
+        $query = $this->db->get('antrain_kode', 1);
+        return $query->result();
+    }
+
+    public function get_antrian($id)
+    {
+        $this->db->select('*');
+        $this->db->where('spesialis_id', $id);
+        $query = $this->db->get('tbl_antrian');
+        return $query->result();
+    }
+
+    function __destruct()
+    {
+        $this->db->close();
+    }
+
+    public function widget()
+    {
+        $query  = $this->db->query(" SELECT
+            (SELECT count(tbl_antrian) FROM tbl_riwayat) as total");
+        return $query->result();
+    }
+
+    public function validate($user_id)
+    {
+        $this->db->select("*");
+        $this->db->from('tbl_antrian');
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
+}
