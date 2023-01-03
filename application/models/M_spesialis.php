@@ -10,10 +10,10 @@ class M_spesialis extends CI_Model
 
     public function read($limit, $start, $key)
     {
-        $this->db->select('a.*, b.user_fullname');
+        $this->db->select('a.*, b.user_fullname, c.*');
         $this->db->from('tbl_spesialis a');
         $this->db->join('tbl_user b', 'a.user_id = b.user_id', 'LEFT');
-
+        $this->db->join('tbl_antrian_berjalan c', 'a.spesialis_id = c.spesialis_id', 'LEFT');
 
         if ($key != '') {
             $this->db->like("spesialis_nama", $key);

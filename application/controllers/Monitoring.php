@@ -18,6 +18,7 @@ class Monitoring extends CI_Controller
 		$data['spesialis']   = $this->m_spesialis->read('', '', '');
 		$data['antrian']   = $this->m_antrian->read('', '', '');
 		$data['dokter']   = $this->m_user->read_group('', '', '', 4);
+		
 
 		// echo "<pre>";
 		// print_r($data['spesialis']);

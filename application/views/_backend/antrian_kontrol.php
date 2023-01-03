@@ -8,7 +8,7 @@
         </ol>
         </ol>
     </section>
-    <section class="content">
+    <section class="content col-lg-7">
         <div class="box">
             <div class="box-header with-border ">
                 <div class="box-tools pull-left">
@@ -17,43 +17,6 @@
                     </div>
                 </div>
                 <div class="box-tools pull-right">
-                    <div style="padding-top:10px">
-                        <a href="<?php echo site_url('admin/monitoring') ?>" class="btn btn-success btn-flat" title="Refresh halaman">refresh</a>
-                    </div>
-
-                    <!-- Modal-->
-                    <div class="modal fade" id="modalCreate" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Ambil Nomor Antrian</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <i aria-hidden="true" class="ki ki-close"></i>
-                                    </button>
-
-                                </div>
-                                <?php echo form_open("admin/monitoring/create_antrian") ?>
-                                <div class="modal-body">
-                                    <?php echo csrf(); ?>
-                                    <div class="form-group">
-                                        <select class="form-control" name="spesialis_id" required>
-                                            <option value="">- Pilih Spesialis -</option>
-                                            <?php
-                                            foreach ($spesialis as $g) {
-                                                echo '<option value="' . $g->spesialis_id . '">' . $g->spesialis_nama . '</option>';
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary font-weight-bold">Ambil Antrian</button>
-                                    <?php echo form_close(); ?>
-                                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Batal</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="box-body">
@@ -71,7 +34,6 @@
                         <th>Nama Pasien</th>
                         <th>Antrian Spesialis</th>
                         <th>Waktu Masuk</th>
-                        <th>#aksi</th>
                     </tr>
                     <?php
                     if ($antrian) {
@@ -86,11 +48,6 @@
                                 <td><?php echo $key->user_fullname; ?></td>
                                 <td><?php echo $key->spesialis_nama; ?></td>
                                 <td><?php echo date("H:i", strtotime($key->arrival_time)); ?></td>
-                                <td>
-                                    <?php if ($key->user_name == $this->session->userdata('user_name') or $this->session->userdata('user_group') < 3) { ?>
-                                        <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $key->antrian_kode ?>">Hapus</button>
-                                    <?php } ?>
-                                </td>
                             </tr>
 
                             <!-- Modal Delete-->
@@ -138,6 +95,44 @@
                     <?php } ?>
                     <small>Memuat Halaman <strong>{elapsed_time}</strong> detik.</small>
                 </div>
+            </div>
+
+    </section>
+    <section class="content col-lg-5">
+        <div class="box">
+            <div class="box-header with-border ">
+                <div class="box-tools pull-right">
+                    <div style="padding-top:10px">
+                        <a href="<?php echo site_url('admin/kontrol') ?>" class="btn btn-danger btn-flat" title="Refresh halaman">Reset Antrian</a>
+                        <a href="<?php echo site_url('admin/kontrol') ?>" class="btn btn-success btn-flat" title="Refresh halaman">refresh</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <h3>Kontrol Antrian</h3>
+                <?php
+                if ($this->session->flashdata('alert')) {
+                    echo $this->session->flashdata('alert');
+                    unset($_SESSION['alert']);
+                }
+                ?>
+                <table class="table table-bordered">
+                    <tr style="background-color: gray;color:white">
+                        <th style="width: 10%">Spesialis</th>
+                        <th style="width: 10%">Saat Ini</th>
+                        <th style="width: 20%">Kontrol</th>
+                    </tr>
+                    <?php foreach ($spesialis as $key) { ?>
+                        <tr>
+                            <td style="width: 60%"><?= $key->spesialis_nama ?></td>
+                            <td style="width: 10%"><?= $key->spesialis_kode_antrian ?><?= $key->antrian_saat_ini ?></td>
+                            <td style="width: 10%">
+                                <button title="Sebelumnya" class="btn btn-sm btn-primary"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+                                <button title="Selanjutnya" class="btn btn-sm btn-primary"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
             </div>
 
     </section>
