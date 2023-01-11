@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class M_antrian extends CI_Model
+class M_antrian_saat_ini extends CI_Model
 {
 
     function __construct()
@@ -8,32 +8,6 @@ class M_antrian extends CI_Model
         parent::__construct();
     }
 
-    public function read($limit, $start, $key)
-    {
-        $this->db->select('a.*, b.user_fullname, b.user_name, c.spesialis_nama');
-        $this->db->from('tbl_antrian a');
-        $this->db->join('tbl_user b', 'a.user_id=b.user_id', 'LEFT');
-        $this->db->join('tbl_spesialis c', 'a.spesialis_id=c.spesialis_id', 'LEFT');
-        $this->db->order_by('a.antrian_nomor', 'ASC');
-
-        if ($key != '') {
-            $this->db->like("user_fullname", $key);
-            $this->db->or_like("antrain_kode", $key);
-        }
-
-        if ($limit != "" or $start != "") {
-            $this->db->limit($limit, $start);
-        }
-
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            foreach ($query->result() as $row) {
-                $data[] = $row;
-            }
-            return $data;
-        }
-        return null;
-    }
 
     public function create($data)
     {
@@ -42,7 +16,7 @@ class M_antrian extends CI_Model
 
     public function update($data)
     {
-        $this->db->update('tbl_antrian', $data, array('antrian_kode' => $data['antrian_kode']));
+        $this->db->update('tbl_antrian_berjalan', $data, array('antrian_berjalan_id' => $data['antrian_berjalan_id']));
     }
 
     public function delete($id)

@@ -8,7 +8,7 @@
                     <nav class="nav-menu d-none d-lg-block">
                         <ul>
                             <li><a href="#">Render Time Halaman <strong>{elapsed_time}</strong> detik.</a></li>
-                            <li><a href="#">Total Antrian Hari Ini = <?= count($antrian) . " / " . $setting[0]->setting_max_antrian ?> </a></li>
+                            <!-- <li><a href="#">Total Antrian Hari Ini = <?= count($antrian) . " / " . $setting[0]->setting_max_antrian ?> </a></li> -->
                             <li class="active"><a href="#">Pukul <span id="jam"></span> : <span id="menit"></span> : <span id="detik"></span></a></li>
                         </ul>
                     </nav><!-- .nav-menu -->

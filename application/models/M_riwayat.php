@@ -37,6 +37,10 @@ class M_riwayat extends CI_Model
         return null;
     }
 
+    public function create($data)
+    {
+        $this->db->insert('tbl_riwayat_antrian', $data);
+    }
     function __destruct()
     {
         $this->db->close();
