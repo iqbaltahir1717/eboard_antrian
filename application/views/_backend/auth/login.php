@@ -79,6 +79,12 @@
                 </div>
             </div>
             <?php echo form_close(); ?>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="<?php echo site_url('monitoring') ?>" class="btn btn-warning btn-block btn-flat hovers" style="border-radius: 12px;padding: 12px 0">Lihat Antrian</a>
+                </div>
+            </div>
             <!-- End Form Login -->
             <br>
             <p class="text-center" style="color: #ffff;">
