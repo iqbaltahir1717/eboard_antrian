@@ -52,7 +52,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <img src="<?php echo base_url(); ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>" alt="" width="50%">
+            <img src="<?php echo base_url(); ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>" alt="" width="30%">
         </div>
 
         <div class="login-box-body">
@@ -64,13 +64,20 @@
             }
             ?>
             <!-- Start Form Login -->
-            <?php echo form_open("auth/validate", "class='login-form'"); ?>
+            <?php echo form_open("auth/create"); ?>
             <div class="form-group has-feedback">
                 <?php echo csrf(); ?>
-                <input type="text" class="form-control" placeholder="Masukkan Email" name="user_email">
+                <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap" name="user_fullname" required value="<?= $user_fullname; ?>">
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Masukkan Password" name="password">
+                <?php echo csrf(); ?>
+                <input type="email" class="form-control" placeholder="Masukkan Email" name="user_email" required value="<?= $user_email ?>">
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Masukkan Password" name="user_password" required value="<?= $user_password ?>">
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Masukkan Konfirmasi Password" name="password_confirm" required value="<?= $password_confirm ?>">
             </div>
             <hr style="border: 0.5px dashed #fff">
             <div class="row">
@@ -82,7 +89,7 @@
             <!-- End Form Login -->
             <br>
             <p class="text-center" style="color: #ffff;">
-                Belum mempunyai akun ? <a href="<?php echo site_url('auth/register') ?>" style="color:#ffe545;"><u>daftar disini</u></a><br>
+                Sudah mempunyai akun ? <a href="<?php echo site_url('auth/') ?>" style="color:#ffe545;"><u>masuk disini</u></a><br>
                 <?php echo $setting[0]->setting_owner_name; ?><br>
             </p>
         </div>

@@ -98,4 +98,20 @@ class M_user extends CI_Model
     {
         $this->db->close();
     }
+
+    public function count_dokter()
+    {
+        $query  = $this->db->query(" SELECT
+            (SELECT count('user_id') FROM tbl_user WHERE 
+            group_id = '4' ) as total");
+        return $query->result();
+    }
+
+    public function count_pasien()
+    {
+        $query  = $this->db->query(" SELECT
+            (SELECT count('user_id') FROM tbl_user WHERE 
+            group_id = '3' ) as total");
+        return $query->result();
+    }
 }

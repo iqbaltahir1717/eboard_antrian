@@ -194,6 +194,18 @@
                     </div>
                 </div>
 
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for=""><b style="color: black">Isi Informasi Bantuan <span style="color:red">*</span></b></label>
+                            <textarea cols="80" id="editor" name="setting_help" rows="10" style="resize:none;max-width:700px;">
+                                <?= $setting[0]->setting_help ?></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
 
 
 

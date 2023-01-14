@@ -9,7 +9,7 @@ class M_auth extends CI_Model {
     public function validate($username) {
         $this->db->select("*");
         $this->db->from('tbl_user');
-        $this->db->where('user_name', $username);
+        $this->db->where('user_email', $username);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -24,4 +24,3 @@ class M_auth extends CI_Model {
         $this->db->close();
     }          
 }
-?>

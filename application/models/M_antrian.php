@@ -91,4 +91,11 @@ class M_antrian extends CI_Model
         }
         return false;
     }
+
+    public function count_kunjungan()
+    {
+        $query  = $this->db->query(" SELECT
+            (SELECT count('user_id') FROM tbl_antrian) as total");
+        return $query->result();
+    }
 }

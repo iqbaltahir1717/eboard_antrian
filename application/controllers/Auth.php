@@ -5,6 +5,7 @@ class Auth extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_auth');
+		$this->load->model('m_user');
 	}
 
 
@@ -33,7 +34,7 @@ class Auth extends CI_Controller
 	{
 		csrfValidate();
 		if ($_POST) {
-			$result           = $this->m_auth->validate(str_replace(' ', '', $this->db->escape_str($this->input->post('username'))));
+			$result           = $this->m_auth->validate(str_replace(' ', '', $this->db->escape_str($this->input->post('user_email'))));
 			if (!!($result)) {
 				if (password_verify($this->input->post('password'), $result[0]->user_password)) {
 					// SESSION DATA
@@ -54,7 +55,7 @@ class Auth extends CI_Controller
 					$logMessage = $data['user_fullname'] . " melakukan login ke sistem";
 					createLog($logMessage);
 
-					if ($data['user_group'] < 3) {
+					if ($data['user_group'] < 3 or $data['user_group'] == 4) {
 						redirect('admin/dashboard');
 					} else redirect('admin/monitoring');
 				} else {
@@ -79,5 +80,60 @@ class Auth extends CI_Controller
 	{
 		$this->session->sess_destroy();
 		redirect('auth');
+	}
+
+
+	public function register()
+	{
+		// DATA
+		$data['setting'] = getSetting();
+		$data['user_password'] = '';
+		$data['password_confirm'] = '';
+		$data['user_fullname']  = '';
+		$data['user_email']     = '';
+
+		// TEMPLATE
+		$view         = "_backend/auth/register";
+		$viewCategory = "single";
+		renderTemplate($data, $view, $viewCategory);
+	}
+
+	public function create()
+	{
+		csrfValidate();
+
+		$data['user_password'] = $this->input->post('user_password');
+		$data['user_fullname']  = $this->input->post('user_fullname');
+		$data['user_email']     = $this->input->post('user_email');
+
+
+		if ($this->input->post('user_password') == $this->input->post('password_confirm')) {
+			// POST
+			$data['user_id']        = '';
+			$data['user_name']      = strtolower(str_replace(' ', '', $this->input->post('user_fullname')));
+			$data['user_password']  = password_hash($this->input->post('user_password'), PASSWORD_BCRYPT);
+			$data['user_lastlogin'] = '';
+			$data['user_photo']     = '';
+			$data['group_id']       = 3;
+			$data['createtime']     = date('Y-m-d H:i:s');
+			$this->m_user->create($data);
+
+
+			// ALERT
+			$alertStatus  = "success";
+			$alertMessage = "Berhasil menambah data user " . $data['user_name'];
+			getAlert($alertStatus, $alertMessage);
+
+
+			redirect('auth/');
+		} else {
+
+			// ALERT
+			$alertStatus  = "failed";
+			$alertMessage = "Password Tidak Sama ";
+			getAlert($alertStatus, $alertMessage);
+
+			redirect('auth/register/', $data);
+		}
 	}
 }

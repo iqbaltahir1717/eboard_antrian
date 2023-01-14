@@ -33,7 +33,7 @@
                         <!-- small box -->
                         <div class="small-box bg-primary">
                             <div class="inner">
-                                <!-- <h3><?php echo $widget_doa[0]->total; ?></h3> -->
+                                <h3><?php echo $widget_pasien[0]->total; ?></h3>
                                 <p>Total Pasien</p>
                             </div>
                             <div class="icon">
@@ -49,7 +49,7 @@
                         <!-- small box -->
                         <div class="small-box bg-primary">
                             <div class="inner">
-                                <!-- <h3><?php echo $widget_riwayat[0]->total; ?></h3> -->
+                                <h3><?php echo $widget_kunjungan_bulan[0]->total; ?></h3>
                                 <p>Total Kunjungan Perbulan</p>
                             </div>
                             <div class="icon">
@@ -64,7 +64,7 @@
                         <!-- small box -->
                         <div class="small-box bg-primary">
                             <div class="inner">
-                                <!-- <h3><?php echo $widget_kategori[0]->total; ?></h3> -->
+                                <h3><?php echo $widget_dokter[0]->total; ?></h3>
                                 <p>Total Dokter</p>
                             </div>
                             <div class="icon">
@@ -79,7 +79,7 @@
                         <!-- small box -->
                         <div class="small-box bg-primary">
                             <div class="inner">
-                                <!-- <h3><?php echo $widget_panduan[0]->total; ?></h3> -->
+                                <h3><?php echo $widget_kunjungan_hari[0]->total; ?></h3>
                                 <p>Total Kunjungan Hari ini</p>
                             </div>
                             <div class="icon">

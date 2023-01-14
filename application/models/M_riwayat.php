@@ -23,7 +23,7 @@ class M_riwayat extends CI_Model
             $this->db->where("a.createtime <=", $end_date);
             $this->db->order_by("a.arrival_time", "ASC");
         } else {
-            $this->db->order_by("a.createtime", "ASC");
+            $this->db->order_by("a.arrival_time", "ASC");
         }
 
 
@@ -44,5 +44,13 @@ class M_riwayat extends CI_Model
     function __destruct()
     {
         $this->db->close();
+    }
+
+    public function count_kunjungan_bulan()
+    {
+        $date_now = date('Y-m');
+        $query  = $this->db->query(" SELECT
+            (SELECT count('user_id') FROM tbl_riwayat_antrian WHERE createtime = MONTH($date_now)) as total");
+        return $query->result();
     }
 }

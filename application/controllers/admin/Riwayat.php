@@ -190,6 +190,10 @@ class Riwayat extends CI_Controller
 
                 $data["output"][] = [$key->createtime, $key->user_fullname, $key->spesialis_nama, $key->antrian_nomor, $arrival_time, $service_start_time, $service_end_time,  $output_st, $output_tiq, $output_tis, $arrival_time2, $service_start_time2, $service_end_time2, $diff_st, $diff_tiq, $diff_tis];
             }
+            // echo '<pre>';
+            // print_r($data["output"]);
+            // echo '<pre>';
+            // die;
 
             $total_data = count($data['riwayat']);
             $data["total_data"] =  $total_data;
@@ -204,17 +208,22 @@ class Riwayat extends CI_Controller
                     $data["total_at"][] = [$total_at];
                 }
                 $total_end_at = end($data["total_at"]);
-
                 if ($i >= 10 and $i <= 12) {
-                    $total_data_average_at = $total_end_at[0] / $total_data;
-                    $data['output1'] = date("H:i", $total_data_average_at);
+                    $total_data_average_at = $total_end_at[0];
+                    $jams    = floor($total_data_average_at / (60 * 60));
+                    $menits    = floor(($total_data_average_at - $jams * (60 * 60)) / 60);
+                    $jams = fmod($jams, 24);
+                    if ($menits  < 10)
+                        $data['output1'] = $jams . ":0" . $menits;
+                    else  $data['output1'] = $jams . ":" . $menits;
                 } else {
                     $total_data_average_at = $total_end_at[0];
-                    $jam    = floor($total_data_average_at / (60 * 60));
-                    $menit    = floor(($total_data_average_at - $jam * (60 * 60)) / 60);
-                    if ($menit  < 10)
-                        $data['output1'] = $jam . ":0" . $menit;
-                    else  $data['output1'] = $jam . ":" . $menit;
+                    $jams    = floor($total_data_average_at / (60 * 60));
+                    $menits    = floor(($total_data_average_at - $jams * (60 * 60)) / 60);
+                    $jams = fmod($jams, 24);
+                    if ($menits  < 10)
+                        $data['output1'] = $jams . ":0" . $menits;
+                    else  $data['output1'] = $jams . ":" . $menits;
                 }
                 $i++;
                 $data['averages'][] = [$data['output1'], $total_data_average_at];
