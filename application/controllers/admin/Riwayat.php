@@ -232,7 +232,6 @@ class Riwayat extends CI_Controller
                 $data['menunggu'][] = [round($menit2 / $total_data, 1), $menit2, $menunggu];
             }
 
-
             // Tingkat kedatangan rata-rata persatuan waktu (AT), Tingkat pelayanan rata-rata persatuan waktu (SST)
             for ($i = 0; $i < 2; $i++) {
                 $tingkat = $data['averages'][$i][1];
@@ -245,20 +244,20 @@ class Riwayat extends CI_Controller
                 $data['tingkat'][] =  [round($total_data / $menit4, 6), $menit4,    $jam4, $tingkat];
             }
 
-            // echo '<pre>';
-            // print_r($data['tingkat']);
-            // echo '<pre>';
-            // die;
-
             //Tingkat Intensitas fasilitas pelayanan
             $y = round($data['tingkat'][0][0], 6);
             $n = round($data['tingkat'][1][0], 6);
             $data["K"] = round($y /  $n, 2);
             $data["W"] = abs(100 - $data["K"]);
-            $data["ls"] = $data["K"] / $data["W"];
+            $data["ls"] = round(abs(round($y, 3) / round(($n - $y), 3)), 2);
             $data["la"] = abs(pow($y, 2) / ($n * ($n - $y)));
             $data["ws"] = abs(1 / ($n - $y));
             $data["wa"] = abs($y  / ($n * ($n - $y)));
+
+            // echo '<pre>';
+            // print_r(round($y, 3));
+            // echo '<pre>';
+            // die;
         } else {
             // ALERT
             $alertStatus  = 'failed';
