@@ -212,7 +212,7 @@ class Riwayat extends CI_Controller
                     $total_data_average_at = $total_end_at[0];
                     $jams    = floor($total_data_average_at / (60 * 60));
                     $menits    = floor(($total_data_average_at - $jams * (60 * 60)) / 60);
-                    $jams = fmod($jams, 24);
+                    $jams = fmod($jams - 8, 24);
                     if ($menits  < 10)
                         $data['output1'] = $jams . ":0" . $menits;
                     else  $data['output1'] = $jams . ":" . $menits;
