@@ -192,11 +192,11 @@
                         <td><?php echo round($la, 2) ?> ( <?= floor($la) ?> Orang)</td>
                     </tr>
                     <tr>
-                        <th>Rata-rata waktu menunggu dalam antrian (Wa)</th>
+                        <th>Rata-rata waktu menunggu dalam sistem (Ws)</th>
                         <td><?php echo round($ws, 2) ?> Menit</td>
                     </tr>
                     <tr>
-                        <th>Rata-rata waktu menunggu dalam antrian (Ws)</th>
+                        <th>Rata-rata waktu menunggu dalam antrian (Wa)</th>
                         <td><?php echo round($wa, 2); ?> menit</td>
                     </tr>
                     <tr>
