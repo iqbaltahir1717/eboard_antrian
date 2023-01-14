@@ -188,10 +188,6 @@ class Riwayat extends CI_Controller
 
                 $data["output"][] = [$key->createtime, $key->user_fullname, $key->spesialis_nama, $key->antrian_nomor, $arrival_time, $service_start_time, $service_end_time,  $output_st, $output_tiq, $output_tis, $arrival_time2, $service_start_time2, $service_end_time2, $diff_st, $diff_tiq, $diff_tis];
             }
-            // echo '<pre>';
-            // print_r($data["output"]);
-            // echo '<pre>';
-            // die;
 
             $total_data = count($data['riwayat']);
             $data["total_data"] =  $total_data;
@@ -241,9 +237,18 @@ class Riwayat extends CI_Controller
             for ($i = 0; $i < 2; $i++) {
                 $tingkat = $data['averages'][$i][1];
                 $jam4    = explode(":", date("H:i", $tingkat));
-                $menit4 = ($jam4[0] * 60) + $jam4[1];
-                $data['tingkat'][] =  [round($total_data / $menit4, 6), $menit4];
+                if ($i == 0) {
+                    $menit4 = (round($jam4[0] + 8) * 60) + $jam4[1];
+                } else {
+                    $menit4 = (round($jam4[0] + 8) * 60) + $jam4[1];
+                }
+                $data['tingkat'][] =  [round($total_data / $menit4, 6), $menit4,    $jam4, $tingkat];
             }
+
+            // echo '<pre>';
+            // print_r($data['tingkat']);
+            // echo '<pre>';
+            // die;
 
             //Tingkat Intensitas fasilitas pelayanan
             $y = round($data['tingkat'][0][0], 6);
