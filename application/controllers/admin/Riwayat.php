@@ -60,10 +60,6 @@ class Riwayat extends CI_Controller
 
                 $data["output"][] = [$key->createtime, $key->user_fullname, $key->spesialis_nama, $key->antrian_nomor, $arrival_time, $service_start_time, $service_end_time,  $output_st, $output_tiq, $output_tis, $arrival_time2, $service_start_time2, $service_end_time2, $diff_st, $diff_tiq, $diff_tis];
             }
-            // echo '<pre>';
-            // print_r($data["output"]);
-            // echo '<pre>';
-            // die;
 
             $total_data = count($data['riwayat']);
             $data["total_data"] =  $total_data;
@@ -108,13 +104,16 @@ class Riwayat extends CI_Controller
                 $data['menunggu'][] = [round($menit2 / $total_data, 1), $menit2, $menunggu];
             }
 
-
             // Tingkat kedatangan rata-rata persatuan waktu (AT), Tingkat pelayanan rata-rata persatuan waktu (SST)
             for ($i = 0; $i < 2; $i++) {
                 $tingkat = $data['averages'][$i][1];
                 $jam4    = explode(":", date("H:i", $tingkat));
-                $menit4 = ($jam4[0] * 60) + $jam4[1];
-                $data['tingkat'][] =  [round($total_data / $menit4, 6), $menit4];
+                if ($i == 0) {
+                    $menit4 = (round($jam4[0] + 8) * 60) + $jam4[1];
+                } else {
+                    $menit4 = (round($jam4[0] + 8) * 60) + $jam4[1];
+                }
+                $data['tingkat'][] =  [round($total_data / $menit4, 6), $menit4,    $jam4, $tingkat];
             }
 
             //Tingkat Intensitas fasilitas pelayanan
@@ -122,10 +121,15 @@ class Riwayat extends CI_Controller
             $n = round($data['tingkat'][1][0], 6);
             $data["K"] = round($y /  $n, 2);
             $data["W"] = abs(100 - $data["K"]);
-            $data["ls"] = $data["K"] / $data["W"];
+            $data["ls"] = round(abs(round($y, 3) / round(($n - $y), 3)), 2);
             $data["la"] = abs(pow($y, 2) / ($n * ($n - $y)));
             $data["ws"] = abs(1 / ($n - $y));
             $data["wa"] = abs($y  / ($n * ($n - $y)));
+
+            // echo '<pre>';
+            // print_r(round($y, 3));
+            // echo '<pre>';
+            // die;
         } else {
             // ALERT
             $alertStatus  = 'failed';
@@ -134,6 +138,7 @@ class Riwayat extends CI_Controller
 
             redirect('admin/riwayat');
         }
+
 
         // TEMPLATE
         $view         = "_backend/antrian_riwayat";

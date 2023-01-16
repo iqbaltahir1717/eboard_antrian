@@ -159,6 +159,12 @@ class Kontrol extends CI_Controller
 
 	public function reset()
 	{
+		for ($i = 1; $i < 6; $i++) {
+			$data['antrian_berjalan_id'] =  $i;
+			$data['antrian_saat_ini'] = 0;
+			$this->m_antrian_saat_ini->update($data);
+		}
+
 		// ALERT
 		$alertStatus  = "failder";
 		$alertMessage = "Tidak Terdapat Antrian !!";

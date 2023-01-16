@@ -17,7 +17,6 @@ class Group extends CI_Controller
         }
     }
 
-
     public function index()
     {
         $this->session->unset_userdata('sess_search_group');

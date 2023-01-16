@@ -114,7 +114,7 @@
             <div class="box-header with-border ">
                 <div class="box-tools pull-right">
                     <div style="padding-top:10px">
-                        <a href="<?php echo site_url('admin/kontrol') ?>" class="btn btn-danger btn-flat" title="Refresh halaman">Reset Antrian</a>
+                        <a href="<?php echo site_url('admin/kontrol/reset') ?>" onclick="return confirm('Apa kamu yakin reset antrian?');" class="btn btn-danger btn-flat" title="Refresh halaman">Reset Antrian</a>
                         <a href="<?php echo site_url('admin/kontrol') ?>" class="btn btn-success btn-flat" title="Refresh halaman">refresh</a>
                     </div>
                 </div>

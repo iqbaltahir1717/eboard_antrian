@@ -46,7 +46,7 @@
                             <div class="box-tools pull-right">
                                 <div style="padding-top:10px">
                                     <a href="<?php echo site_url('admin/spesialis') ?>" class="btn btn-success btn-flat" title="Refresh halaman">refresh</a>
-                                    <button type="submit" class="btn btn-primary btn-flat" title="Tambah data" data-toggle="modal" data-target="#modalCreate"> tambah</button>
+                                    <!-- <button type="submit" class="btn btn-primary btn-flat" title="Tambah data" data-toggle="modal" data-target="#modalCreate"> tambah</button> -->
                                 </div>
 
                                 <!-- Modal-->
@@ -116,7 +116,7 @@
                                     <th style="width: 20%">#aksi</th>
                                     <th>Nama Spesialis</th>
                                     <th>Nama Dokter Aktif</th>
-                                    <th>Layanan</th>
+                                    <!-- <th>Layanan</th> -->
                                 </tr>
                                 <?php
                                 if ($spesialis) {
@@ -127,16 +127,16 @@
                                         <tr>
                                             <td><?php echo $no + $numbers; ?></td>
                                             <td>
-                                                <button class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#modalDetail<?php echo $key->spesialis_id; ?>">detail</button>
+                                                <!-- <button class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#modalDetail<?php echo $key->spesialis_id; ?>">detail</button> -->
                                                 <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#modalUpdate<?php echo $key->spesialis_id; ?>">update</button>
-                                                <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $key->spesialis_id ?>">hapus</button>
+                                                <!-- <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $key->spesialis_id ?>">hapus</button> -->
                                             </td>
                                             <td><?php echo $key->spesialis_nama; ?></td>
                                             <td><?php echo $key->user_fullname; ?></td>
-                                            <td><?php if ($key->spesialis_active == 1) { ?>
+                                            <!-- <td><?php if ($key->spesialis_active == 1) { ?>
                                                     <i class="fa fa-circle   text-green"></i> Aktif
                                                 <?php } else { ?> <i class="fa fa-circle text-red"></i> Tidak Aktif <?php } ?>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <!-- Modal Update-->
                                         <div class="modal fade" id="modalUpdate<?php echo $key->spesialis_id ?>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
@@ -171,7 +171,7 @@
                                                                 ?>
                                                             </select>
                                                         </div>
-                                                        <div class="form-group">
+                                                        <!-- <div class="form-group">
                                                             <label for=""><b style="color: black">Layanan <span style="color:red">*</span></b></label>
                                                             <select class="form-control" name="spesialis_active" required>
                                                                 <?php
@@ -188,7 +188,7 @@
                                                                 }
                                                                 ?>
                                                             </select>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-warning font-weight-bold">Update</button>
