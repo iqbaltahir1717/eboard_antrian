@@ -67,7 +67,7 @@
             <?php echo form_open("auth/validate", "class='login-form'"); ?>
             <div class="form-group has-feedback">
                 <?php echo csrf(); ?>
-                <input type="text" class="form-control" placeholder="Masukkan Email" name="user_email">
+                <input type="text" class="form-control" placeholder=" Nomor Telpon cth:08xxxxxx" name="user_phone">
             </div>
             <div class="form-group has-feedback">
                 <input type="password" class="form-control" placeholder="Masukkan Password" name="password">
@@ -75,7 +75,7 @@
             <hr style="border: 0.5px dashed #fff">
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-facebook btn-block btn-flat hovers" style="background-color:#2A9D8F;border-radius: 12px;padding: 12px 0">Masuk</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat hovers" style="background-color:#2A9D8F;border-radius: 12px;padding: 12px 0">Masuk</button>
                 </div>
             </div>
             <?php echo form_close(); ?>
@@ -96,6 +96,7 @@
 
     <script src="<?php echo base_url(); ?>assets/core-admin/core-component/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/core-admin/core-component/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

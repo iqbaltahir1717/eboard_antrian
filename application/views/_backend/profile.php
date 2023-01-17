@@ -32,8 +32,6 @@
                                     }
                                     ?>
                                     <h3 class="profile-username text-center"><?php echo $profile[0]->user_fullname; ?></h3>
-                                    <p class="text-muted text-center">Software Engineer</p>
-
                                     <br>
                                     <strong><i class="fa fa-circle-o text-red"></i> Username</strong>
                                     <p class="text-muted">
@@ -41,9 +39,9 @@
                                     </p>
                                     <hr style="border: 0.5px dashed #d2d6de">
 
-                                    <strong><i class="fa fa-circle-o text-red"></i> Email</strong>
+                                    <strong><i class="fa fa-circle-o text-red"></i> Nomor Telpon</strong>
                                     <p class="text-muted">
-                                        <?php echo $profile[0]->user_email; ?>
+                                        <?php echo $profile[0]->user_phone; ?>
                                     </p>
                                     <hr style="border: 0.5px dashed #d2d6de">
 
@@ -75,7 +73,7 @@
                                         ?>
                                         <?php echo form_open_multipart("admin/profile/update", 'class="form-horizontal"') ?>
                                         <div class="form-group">
-                                            <label for="inputName" class="col-sm-2 control-label">Nama User</label>
+                                            <label for="inputName" class="col-sm-2 control-label">Nama Lengkap</label>
                                             <div class="col-sm-10">
                                                 <?php echo csrf(); ?>
                                                 <input type="text" class="form-control" placeholder="Nama User" name="user_fullname" value="<?php echo $profile[0]->user_fullname; ?>" required>
@@ -84,13 +82,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                            <label for="inputEmail" class="col-sm-2 control-label">Nomor Telpon</label>
                                             <div class="col-sm-10">
-                                                <input type="email" class="form-control" placeholder="Email" name="user_email" value="<?php echo $profile[0]->user_email; ?>" required>
+                                                <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" value="<?php echo $profile[0]->user_phone; ?>" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="inputEmail" class="col-sm-2 control-label">Photo</label>
+                                            <label for="inputEmail" class="col-sm-2 control-label">Foto</label>
                                             <div class="col-sm-10">
                                                 <input type="file" class="form-control" name="userfile">
                                             </div>

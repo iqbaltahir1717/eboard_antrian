@@ -21,26 +21,6 @@
                         <div class="box-header with-border">
                             <div class="box-tools pull-left">
                                 <div class="form-inline">
-                                    <select class="form-control" id="rowpage">
-                                        <?php
-                                        $rowpage = array(5, 10, 25, 50, 100);
-                                        for ($r = 0; $r < count($rowpage); $r++) {
-                                            if ($rowpage[$r] == $this->session->userdata('sess_rowpage')) {
-                                                echo '<option value="' . $rowpage[$r] . '" selected>' . $rowpage[$r] . '</option>';
-                                            } else {
-                                                echo '<option value="' . $rowpage[$r] . '">' . $rowpage[$r] . '</option>';
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                    <div class="input-group margin">
-                                        <?php echo form_open("admin/group/search") ?>
-                                        <input type="text" class="form-control" name="key" placeholder="Masukkan kata kunci pencarian">
-                                        <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-danger btn-flat">cari</button>
-                                        </span>
-                                        <?php echo form_close(); ?>
-                                    </div>
                                 </div>
                             </div>
                             <div class="box-tools pull-right">
@@ -104,8 +84,8 @@
                                         <tr>
                                             <td><?php echo $no + $numbers; ?></td>
                                             <td>
-                                                <button class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#modalDetail<?php echo $key->group_id; ?>">detail</button>
-                                                <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#modalUpdate<?php echo $key->group_id; ?>">update</button>
+                                                <!-- <button class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#modalDetail<?php echo $key->group_id; ?>">detail</button> -->
+                                                <button class="btn btn-xs btn-flat btn-primary" data-toggle="modal" data-target="#modalUpdate<?php echo $key->group_id; ?>">update</button>
                                                 <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $key->group_id ?>">hapus</button>
                                             </td>
                                             <td><?php echo $key->group_name; ?></td>

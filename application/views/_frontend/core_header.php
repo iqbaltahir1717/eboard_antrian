@@ -49,5 +49,26 @@
 			max-width: 550px;
 			margin: 35px auto;
 		}
+
+		.flex {
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
+			flex-direction: row !important;
+			flex-wrap: wrap !important;
+			align-content: center !important;
+		}
+
+		.particles-js-canvas-el {
+			width: 100% !important;
+			height: 100vh !important;
+			position: absolute;
+		}
+
+		.canvass {
+			width: 100% !important;
+			height: 100vh !important;
+			position: absolute;
+		}
 	</style>
 </head>

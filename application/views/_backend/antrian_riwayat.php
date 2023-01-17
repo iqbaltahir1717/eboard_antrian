@@ -25,7 +25,7 @@
                 <div class="box-tools pull-right">
                     <div style="padding-top:10px">
                         <a href="<?php echo site_url('admin/riwayat') ?>" class="btn btn-success btn-flat" title="Refresh halaman">refresh</a>
-                        <button class="btn btn-warning btn-flat" title="print data" data-toggle="modal" data-target="#modalFilter">Filter Data</button>
+                        <button class="btn btn-primary btn-flat" title="print data" data-toggle="modal" data-target="#modalFilter">Filter Data</button>
                     </div>
                     <!-- Modal-->
                     <div class="modal fade" id="modalFilter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">

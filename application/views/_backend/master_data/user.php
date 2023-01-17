@@ -37,7 +37,7 @@
                                         <?php echo form_open("admin/user/search") ?>
                                         <input type="text" class="form-control" name="key" placeholder="Masukkan kata kunci pencarian">
                                         <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-danger btn-flat">cari</button>
+                                            <button type="submit" class="btn btn-success btn-flat">cari</button>
                                         </span>
                                         <?php echo form_close(); ?>
                                     </div>
@@ -132,8 +132,8 @@
                                         <tr>
                                             <td><?php echo $no + $numbers; ?></td>
                                             <td>
-                                                <button class="btn btn-xs btn-flat btn-info" data-toggle="modal" data-target="#modalDetail<?php echo $key->user_id; ?>">detail</button>
-                                                <button class="btn btn-xs btn-flat btn-warning" data-toggle="modal" data-target="#modalUpdate<?php echo $key->user_id; ?>">update</button>
+                                                <!-- <button class="btn btn-xs btn-flat btn-primary" data-toggle="modal" data-target="#modalDetail<?php echo $key->user_id; ?>">detail</button> -->
+                                                <button class="btn btn-xs btn-flat btn-primary" data-toggle="modal" data-target="#modalUpdate<?php echo $key->user_id; ?>">update</button>
                                                 <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $key->user_id ?>">hapus</button>
                                             </td>
                                             <td><?php echo $key->user_fullname; ?></td>

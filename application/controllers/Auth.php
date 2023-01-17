@@ -34,7 +34,7 @@ class Auth extends CI_Controller
 	{
 		csrfValidate();
 		if ($_POST) {
-			$result           = $this->m_auth->validate(str_replace(' ', '', $this->db->escape_str($this->input->post('user_email'))));
+			$result           = $this->m_auth->validate(str_replace(' ', '', $this->db->escape_str($this->input->post('user_phone'))));
 			if (!!($result)) {
 				if (password_verify($this->input->post('password'), $result[0]->user_password)) {
 					// SESSION DATA
@@ -44,13 +44,14 @@ class Auth extends CI_Controller
 						'user_fullname'   => $result[0]->user_fullname,
 						'user_photo'      => $result[0]->user_photo,
 						'user_email'      => $result[0]->user_email,
+						'user_phone'      => $result[0]->user_phone,
 						'user_group'      => $result[0]->group_id,
+						'user_group_name' => $result[0]->group_name,
 						'user_createtime' => $result[0]->createtime,
 						'sess_rowpage'    => 10,
 						'IsAuthorized'    => true
 					);
 					$this->session->set_userdata($data);
-
 					// LOG
 					$logMessage = $data['user_fullname'] . " melakukan login ke sistem";
 					createLog($logMessage);
@@ -90,7 +91,7 @@ class Auth extends CI_Controller
 		$data['user_password'] = '';
 		$data['password_confirm'] = '';
 		$data['user_fullname']  = '';
-		$data['user_email']     = '';
+		$data['user_phone']     = '';
 
 		// TEMPLATE
 		$view         = "_backend/auth/register";
@@ -104,7 +105,8 @@ class Auth extends CI_Controller
 
 		$data['user_password'] = $this->input->post('user_password');
 		$data['user_fullname']  = $this->input->post('user_fullname');
-		$data['user_email']     = $this->input->post('user_email');
+		$data['user_phone']     = $this->input->post('user_phone');
+
 
 
 		if ($this->input->post('user_password') == $this->input->post('password_confirm')) {
@@ -114,6 +116,7 @@ class Auth extends CI_Controller
 			$data['user_password']  = password_hash($this->input->post('user_password'), PASSWORD_BCRYPT);
 			$data['user_lastlogin'] = '';
 			$data['user_photo']     = '';
+			$data['user_email']     = '';
 			$data['group_id']       = 3;
 			$data['createtime']     = date('Y-m-d H:i:s');
 			$this->m_user->create($data);

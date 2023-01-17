@@ -13,7 +13,7 @@
             <div class="box-header with-border ">
                 <div class="box-tools pull-left">
                     <div style="padding-top:10px">
-                        Antrian dibuka pukul <span class='label label-danger label-inline font-weight-lighter mr-2'><?= $setting[0]->setting_jam_bukas ?> - <?= $setting[0]->setting_jam_tutups ?> WITA</span>
+                        Antrian dibuka pukul <span class='label label-success label-inline font-weight-lighter mr-2'><?= $setting[0]->setting_jam_bukas ?> - <?= $setting[0]->setting_jam_tutups ?> WITA</span>
                     </div>
                 </div>
                 <div class="box-tools pull-right">
