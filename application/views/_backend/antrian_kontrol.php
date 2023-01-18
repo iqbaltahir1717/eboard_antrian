@@ -42,7 +42,6 @@
                         $nox = 1;
                         $no = 1;
                         foreach ($antrian as $key) {
-
                     ?>
                             <tr>
                                 <td><b><?php echo str_replace('-', '', $key->antrian_nomor); ?></b></td>
@@ -58,9 +57,7 @@
                                                                 else echo 'success' ?>
                                                                 "><?php echo $key->antrian_status; ?></span>
                                 </td>
-
                             </tr>
-
                             <!-- Modal Delete-->
                             <div class="modal fade" id="modalDelete<?php echo $key->antrian_kode ?>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -129,33 +126,36 @@
                 ?>
                 <table class="table table-bordered">
                     <tr style="background-color: gray;color:white">
-                        <th style="width: 10%">Spesialis</th>
-                        <th style="width: 10%">Saat Ini</th>
-                        <th style="width: 20%">Kontrol</th>
+                        <th>Spesialis</th>
+                        <th>Saat Ini</th>
+                        <th>Kontrol</th>
                     </tr>
                     <?php foreach ($spesialis as $key) { ?>
                         <tr>
                             <td style="width: 50%"><?= $key->spesialis_nama ?></td>
-                            <td style="width: 10%"><?= $key->spesialis_kode_antrian ?><?= $key->antrian_saat_ini ?></td>
-                            <td style="width: 40%">
+                            <td style="width: 15%"><?= $key->spesialis_kode_antrian ?><?= $key->antrian_saat_ini ?></td>
+                            <td style="width: 35%">
                                 <div style="display: flex; justify-content: space-around;">
-                                    <?php echo form_open("admin/kontrol/backward") ?>
+                                    <!-- next -->
+                                    <?php echo form_open("admin/kontrol/selesai") ?>
                                     <?php echo csrf(); ?>
-                                    <input type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
                                     <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_saat_ini  ?>">
-                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> type="submit" title="Sebelumnya" class="btn btn-sm btn-primary"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
-                                    <?php echo form_close(); ?>
-                                    <?php echo form_open("admin/kontrol/forward") ?>
-                                    <?php echo csrf(); ?>
-                                    <input type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
-                                    <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_saat_ini  ?>">
+                                    <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
                                     <button type="submit" title="Selanjutnya" class="btn btn-sm btn-primary"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
                                     <?php echo form_close(); ?>
-                                    <?php echo form_open("admin/kontrol/selesai") ?>
+                                    <!-- next -->
+                                    <?php echo form_open("admin/kontrol/callback") ?>
+                                    <?php echo csrf(); ?>
+                                    <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_saat_ini  ?>">
+                                    <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
+                                    <button type="submit" title="panggil ulang" class="btn btn-sm btn-primary"><i class="fa fa-volume-up" aria-hidden="true"></i></button>
+                                    <?php echo form_close(); ?>
+                                    <!-- skip -->
+                                    <?php echo form_open("admin/kontrol/lewati") ?>
                                     <?php echo csrf(); ?>
                                     <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_berjalan_id  ?>">
                                     <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
-                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> type="submit" title="Selesai" class="btn btn-sm btn-primary">Selesai</button>
+                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> type="submit" title="Selanjutnya" class="btn btn-sm btn-danger">Lewati</button>
                                     <?php echo form_close(); ?>
                                 </div>
                             </td>

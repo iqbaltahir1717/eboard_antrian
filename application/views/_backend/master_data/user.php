@@ -68,8 +68,8 @@
                                                     <input type="hidden" class="form-control" name="group_name" value="<?php echo $group_name ?>">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for=""><b style="color: black">Email <span style="color:red">*</span></b></label>
-                                                    <input type="email" class="form-control" placeholder="Email User" name="user_email" required="required">
+                                                    <label for=""><b style="color: black">Nomor Telpon <span style="color:red">*</span></b></label>
+                                                    <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" required="required">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for=""><b style="color: black">Group <span style="color:red">*</span></b></label>
@@ -83,10 +83,6 @@
                                                     </select>
                                                 </div>
                                                 <hr style="border: 0.5px dashed #d2d6de">
-                                                <div class="form-group">
-                                                    <label for=""><b style="color: black">Username <span style="color:red">*</span></b></label>
-                                                    <input type="text" class="form-control" placeholder="Username" name="user_name" required="required">
-                                                </div>
                                                 <div class="form-group">
                                                     <label for=""><b style="color: black">Password <span style="color:red">*</span></b></label>
                                                     <input type="password" class="form-control" placeholder="Password" name="user_password" required="required">
@@ -119,8 +115,7 @@
                                     <th style="width: 60px">No</th>
                                     <th style="width: 20%">#aksi</th>
                                     <th>Nama</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
+                                    <th>Nomor Telpon</th>
                                     <th>Group</th>
                                 </tr>
                                 <?php
@@ -137,8 +132,7 @@
                                                 <button class="btn btn-xs btn-flat btn-danger" data-toggle="modal" data-target="#modalDelete<?php echo $key->user_id ?>">hapus</button>
                                             </td>
                                             <td><?php echo $key->user_fullname; ?></td>
-                                            <td><?php echo $key->user_name; ?></td>
-                                            <td><?php echo $key->user_email; ?></td>
+                                            <td><?php echo $key->user_phone; ?></td>
                                             <td><?php echo $key->group_name; ?></td>
                                         </tr>
 
@@ -162,8 +156,8 @@
                                                             <input type="hidden" class="form-control" name="group_name" value="<?php echo $group_name ?>">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for=""><b style="color: black">Email <span style="color:red">*</span></b></label>
-                                                            <input type="email" class="form-control" placeholder="Email User" name="user_email" required="required" value="<?php echo $key->user_email; ?>">
+                                                            <label for=""><b style="color: black">Nomor Telpon <span style="color:red">*</span></b></label>
+                                                            <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" required="required" value="<?php echo $key->user_phone; ?>">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for=""><b style="color: black">Group <span style="color:red">*</span></b></label>
@@ -181,10 +175,7 @@
                                                             </select>
                                                         </div>
                                                         <hr style="border: 0.5px dashed #d2d6de">
-                                                        <div class="form-group">
-                                                            <label for=""><b style="color: black">Username <span style="color:red">*</span></b></label>
-                                                            <input type="text" class="form-control" placeholder="Username" name="user_name" required="required" value="<?php echo $key->user_name; ?>">
-                                                        </div>
+
                                                         <div class="form-group">
                                                             <label for=""><b style="color: black">Password <span style="color:red">*</span></b><br><small style="color:red"><i>Kosongkan jika tidak ingin mengubah password</i></small></b></label>
                                                             <input type="password" class="form-control" placeholder="Password" name="user_password">
@@ -211,40 +202,15 @@
                                                     </div>
                                                     <?php echo form_open("admin/user/delete") ?>
                                                     <div class="modal-body">
-                                                        Apakah anda yakin akan menghapus data user : <?php echo $key->user_name; ?> ?
+                                                        Apakah anda yakin akan menghapus data user : <?php echo $key->user_fullname; ?> ?
                                                         <?php echo csrf(); ?>
-                                                        <input type="hidden" class="form-control" placeholder="Nama user" name="user_name" required="required" value="<?php echo $key->user_name; ?>">
+                                                        <input type="hidden" class="form-control" placeholder="Nama user" name="user_fullname" required="required" value="<?php echo $key->user_fullname; ?>">
                                                         <input type="hidden" class="form-control" name="user_id" required="required" value="<?php echo $key->user_id; ?>">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-danger font-weight-bold">Hapus</button>
                                                         <?php echo form_close(); ?>
                                                         <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Batal</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Modal Detail-->
-                                        <div class="modal fade" id="modalDetail<?php echo $key->user_id ?>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Detail Data</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <i aria-hidden="true" class="ki ki-close"></i>
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <b>Nama User :</b><br><?php echo $key->user_fullname; ?><br>
-                                                        <b>Email :</b><br><?php echo $key->user_email; ?><br>
-                                                        <b>Group :</b><br><?php echo $key->group_name; ?><br>
-                                                        <b>Username :</b><br><?php echo $key->user_name; ?><br>
-
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Tutup</button>
                                                     </div>
                                                 </div>
                                             </div>

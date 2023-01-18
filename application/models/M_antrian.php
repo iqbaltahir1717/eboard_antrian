@@ -10,7 +10,7 @@ class M_antrian extends CI_Model
 
     public function read($limit, $start, $key)
     {
-        $this->db->select('a.*, b.user_fullname, b.user_name, c.spesialis_nama');
+        $this->db->select('a.*, b.user_fullname, c.spesialis_nama');
         $this->db->from('tbl_antrian a');
         $this->db->join('tbl_user b', 'a.user_id=b.user_id', 'LEFT');
         $this->db->join('tbl_spesialis c', 'a.spesialis_id=c.spesialis_id', 'LEFT');
@@ -45,15 +45,21 @@ class M_antrian extends CI_Model
         $this->db->update('tbl_antrian', $data, array('antrian_kode' => $data['antrian_kode']));
     }
 
-    public function delete($id)
+    public function delete($data)
     {
-        $this->db->delete('tbl_antrian', array('antrian_kode' => $id));
+        $this->db->delete('tbl_antrian', array('antrian_kode' => $data['antrian_kode']));
     }
 
+    // public function get($id)
+    // {
+    //     $this->db->where('riwayat_id', $id);
+    //     $query = $this->db->get('antrain_kode', 1);
+    //     return $query->result();
+    // }
     public function get($id)
     {
-        $this->db->where('riwayat_id', $id);
-        $query = $this->db->get('antrain_kode', 1);
+        $this->db->where('user_id', $id);
+        $query = $this->db->get('tbl_antrian', 1);
         return $query->result();
     }
 

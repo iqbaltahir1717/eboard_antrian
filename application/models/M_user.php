@@ -15,9 +15,8 @@ class M_user extends CI_Model
         $this->db->join('tbl_group b', 'a.group_id = b.group_id', 'LEFT');
 
         if ($key != '') {
-            $this->db->like("a.user_name", $key);
             $this->db->or_like("a.user_fullname", $key);
-            $this->db->or_like("a.user_email", $key);
+            $this->db->or_like("a.user_phone", $key);
             $this->db->or_like("b.group_name", $key);
         }
 
@@ -43,9 +42,8 @@ class M_user extends CI_Model
         $this->db->where('a.group_id = ', $group_id);
 
         if ($key != '') {
-            $this->db->like("a.user_name", $key);
             $this->db->or_like("a.user_fullname", $key);
-            $this->db->or_like("a.user_email", $key);
+            $this->db->or_like("a.user_phone", $key);
             $this->db->or_like("b.group_name", $key);
         }
 

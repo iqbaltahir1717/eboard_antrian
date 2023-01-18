@@ -41,10 +41,6 @@
             border-radius: 12px !important;
             padding: 20px !important;
         }
-
-        .hovers:hover {
-            background-color: #E09F3E;
-        }
     </style>
 </head>
 
@@ -52,7 +48,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <img src="<?php echo base_url(); ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>" alt="" width="50%">
+            <img src="<?php echo base_url(); ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>" alt="" width="30%">
         </div>
 
         <div class="login-box-body">
@@ -75,20 +71,20 @@
             <hr style="border: 0.5px dashed #fff">
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat hovers" style="background-color:#2A9D8F;border-radius: 12px;padding: 12px 0">Masuk</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat hovers" style="border-radius: 12px;padding: 12px 0">Masuk</button>
                 </div>
             </div>
             <?php echo form_close(); ?>
             <br>
             <div class="row">
                 <div class="col-xs-12">
-                    <a href="<?php echo site_url('monitoring') ?>" class="btn btn-warning btn-block btn-flat hovers" style="border-radius: 12px;padding: 12px 0">Lihat Antrian</a>
+                    <a href="<?php echo site_url('eboard') ?>" class="btn btn-success btn-block btn-flat hovers" style="border-radius: 12px;padding: 12px 0">Lihat Antrian</a>
                 </div>
             </div>
             <!-- End Form Login -->
             <br>
             <p class="text-center" style="color: #ffff;">
-                Belum mempunyai akun ? <a href="<?php echo site_url('auth/register') ?>" style="color:#ffe545;"><u>daftar disini</u></a><br>
+                Belum mempunyai akun ? <a href="<?php echo site_url('auth/register') ?>" style="color:#8bff6c;"><u>daftar disini</u></a><br>
                 <?php echo $setting[0]->setting_owner_name; ?><br>
             </p>
         </div>

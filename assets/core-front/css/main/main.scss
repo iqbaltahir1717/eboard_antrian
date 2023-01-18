@@ -19,7 +19,7 @@ body {
     position: fixed;
     bottom: 0;
     backdrop-filter: blur(10px);
-    background: linear-gradient(286.58deg, rgba(73, 73, 73, 0.279) 1.75%, rgba(71, 71, 71, 0) 101.04%);
+    background: linear-gradient(286.58deg, rgba(73, 73, 73, 0.693) 1.75%, rgba(71, 71, 71, 0.284) 101.04%);
     width: 100%;
 }
 
@@ -29,6 +29,7 @@ body {
 
 .box-item {
     color: #fff !important;
+   
     background: linear-gradient(286.58deg, rgba(214, 202, 202, 0.35) 1.75%, rgba(255, 255, 255, 0) 101.04%);
     filter: drop-shadow(5px 4px 11px rgba(0, 0, 0, 0.25));
     backdrop-filter: blur(25px);

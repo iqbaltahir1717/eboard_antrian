@@ -40,10 +40,8 @@ class Auth extends CI_Controller
 					// SESSION DATA
 					$data = array(
 						'user_id'         => $result[0]->user_id,
-						'user_name'       => $result[0]->user_name,
 						'user_fullname'   => $result[0]->user_fullname,
 						'user_photo'      => $result[0]->user_photo,
-						'user_email'      => $result[0]->user_email,
 						'user_phone'      => $result[0]->user_phone,
 						'user_group'      => $result[0]->group_id,
 						'user_group_name' => $result[0]->group_name,
@@ -58,7 +56,7 @@ class Auth extends CI_Controller
 
 					if ($data['user_group'] < 3 or $data['user_group'] == 4) {
 						redirect('admin/dashboard');
-					} else redirect('admin/monitoring');
+					} else redirect('eboard');
 				} else {
 					// ALERT
 					$alertStatus  = 'failed';

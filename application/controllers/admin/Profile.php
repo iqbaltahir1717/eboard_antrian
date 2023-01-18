@@ -107,29 +107,25 @@ class Profile extends CI_Controller
 
         // POST
         $data['user_id']       = $this->input->post('user_id');
-        $data['user_name']     = $this->input->post('user_name');
-        $data['user_email']    = $this->input->post('user_email');
         $data['user_fullname'] = $this->input->post('user_fullname');
         $data['user_phone'] = $this->input->post('user_phone');
         $this->m_user->update($data);
 
         // SET SESSION
         $session = array(
-            'user_name'       => $data['user_name'],
             'user_fullname'   => $data['user_fullname'],
             'user_photo'      => $data['user_photo'],
-            'user_email'      => $data['user_email'],
             'user_phone'      => $data['user_phone'],
         );
         $this->session->set_userdata($session);
 
         // LOG
-        $message    = $this->session->userdata('user_name') . " mengubah data profile dengan ID = " . $data['user_id'] . " - " . $data['user_name'];
+        $message    = $this->session->userdata('user_fullname') . " mengubah data profile dengan ID = " . $data['user_id'] . " - " . $data['user_fullname'];
         createLog($message);
 
         // ALERT
         $alertStatus  = "success";
-        $alertMessage = "Berhasil mengubah data profile : " . $data['user_name'];
+        $alertMessage = "Berhasil mengubah data profile : " . $data['user_fullname'];
         getAlert($alertStatus, $alertMessage);
 
         redirect('admin/profile');

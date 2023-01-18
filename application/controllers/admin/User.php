@@ -146,6 +146,8 @@ class User extends CI_Controller
             $data['search'] = $this->session->userdata('sess_search_user');
         }
 
+        $data['group_name'] = '';
+
         // PAGINATION
         $baseUrl    = base_url() . "admin/user/search/" . $data['search'] . "/";
         $totalRows  = count((array)$this->m_user->read('', '', $data['search']));
@@ -176,10 +178,9 @@ class User extends CI_Controller
         csrfValidate();
         // POST
         $data['user_id']        = '';
-        $data['user_name']      = $this->input->post('user_name');
         $data['user_password']  = password_hash($this->input->post('user_password'), PASSWORD_BCRYPT);
         $data['user_fullname']  = $this->input->post('user_fullname');
-        $data['user_email']     = $this->input->post('user_email');
+        $data['user_phone']     = $this->input->post('user_phone');
         $data['user_lastlogin'] = '';
         $data['user_photo']     = '';
         $data['group_id']       = $this->input->post('group_id');
@@ -188,12 +189,12 @@ class User extends CI_Controller
 
         $group_name     = $this->input->post('group_name');
         // LOG
-        $message    = $this->session->userdata('user_name') . " menambah data user " . $data['user_name'];
+        $message    = $this->session->userdata('user_fullname') . " menambah data user " . $data['user_fullname'];
         createLog($message);
 
         // ALERT
         $alertStatus  = "success";
-        $alertMessage = "Berhasil menambah data user " . $data['user_name'];
+        $alertMessage = "Berhasil menambah data user " . $data['user_fullname'];
         getAlert($alertStatus, $alertMessage);
 
         if ($group_name == null) {
@@ -209,26 +210,25 @@ class User extends CI_Controller
         csrfValidate();
         // POST
         $data['user_id']       = $this->input->post('user_id');
-        $data['user_name']     = $this->input->post('user_name');
 
         if ($this->input->post('user_password') != "") {
             $data['user_password'] = password_hash($this->input->post('user_password'), PASSWORD_BCRYPT);
         }
 
         $data['user_fullname'] = $this->input->post('user_fullname');
-        $data['user_email']    = $this->input->post('user_email');
+        $data['user_phone']    = $this->input->post('user_phone');
         $data['group_id']      = $this->input->post('group_id');
         $this->m_user->update($data);
 
         $data['group_name']     = $this->input->post('group_name');
 
         // LOG
-        $message    = $this->session->userdata('user_name') . " mengubah data user dengan ID = " . $data['user_id'] . " - " . $data['user_name'];
+        $message    = $this->session->userdata('user_fullname') . " mengubah data user dengan ID = " . $data['user_id'] . " - " . $data['user_fullname'];
         createLog($message);
 
         // ALERT
         $alertStatus  = "success";
-        $alertMessage = "Berhasil mengubah data user : " . $data['user_name'];
+        $alertMessage = "Berhasil mengubah data user : " . $data['user_fullname'];
         getAlert($alertStatus, $alertMessage);
 
         redirect('admin/user/' .  $data['group_name']);
@@ -242,12 +242,12 @@ class User extends CI_Controller
         $this->m_user->delete($this->input->post('user_id'));
 
         // LOG
-        $message    = $this->session->userdata('user_name') . " menghapus data user dengan ID = " . $this->input->post('user_id') . " - " . $this->input->post('user_name');
+        $message    = $this->session->userdata('user_fullname') . " menghapus data user dengan ID = " . $this->input->post('user_id') . " - " . $this->input->post('user_fullname');
         createLog($message);
 
         // ALERT
         $alertStatus  = "failed";
-        $alertMessage = "Menghapus data user : " . $this->input->post('user_name');
+        $alertMessage = "Menghapus data user : " . $this->input->post('user_fullname');
         getAlert($alertStatus, $alertMessage);
 
         redirect('admin/user');

@@ -41,10 +41,6 @@
             border-radius: 12px !important;
             padding: 20px !important;
         }
-
-        .hovers:hover {
-            background-color: #E09F3E;
-        }
     </style>
 </head>
 
@@ -82,14 +78,14 @@
             <hr style="border: 0.5px dashed #fff">
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-facebook btn-block btn-flat hovers" style="background-color:#2A9D8F;border-radius: 12px;padding: 12px 0">Masuk</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat hovers" style="border-radius: 12px;padding: 12px 0">Daftar</button>
                 </div>
             </div>
             <?php echo form_close(); ?>
             <!-- End Form Login -->
             <br>
             <p class="text-center" style="color: #ffff;">
-                Sudah mempunyai akun ? <a href="<?php echo site_url('auth/') ?>" style="color:#ffe545;"><u>masuk disini</u></a><br>
+                Sudah mempunyai akun ? <a href="<?php echo site_url('auth/') ?>" style="color:#8bff6c;"><u>masuk disini</u></a><br>
                 <?php echo $setting[0]->setting_owner_name; ?><br>
             </p>
         </div>

@@ -15,7 +15,7 @@
             <div class="box-header with-border">
                 <div class="box-tools pull-right">
                     <a href="<?php echo site_url('admin/setting') ?>" class="btn btn-success btn-flat" title="Refresh halaman">Refresh</a>
-                    <button type="submit" class="btn btn-warning btn-flat" title="Update data setting">Update Data Setting</button>
+                    <button type="submit" class="btn btn-primary btn-flat" title="Update data setting">Update Data Setting</button>
                 </div>
             </div>
             <div class="box-body">

@@ -19,7 +19,7 @@
 <script>
     $(document).ready(function() {
         function antrian() {
-            url = "<?php echo base_url(); ?>eboard/realtime";
+            url = "<?php echo base_url(); ?>monitoring/realtime";
             $.get(url, function(data, status) {
                 const result = JSON.stringify(data)
                 data = JSON.parse(result);

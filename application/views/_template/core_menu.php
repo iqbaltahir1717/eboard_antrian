@@ -97,7 +97,7 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="header">Menu Utama</li>
                             <li class="active"><a href="<?php echo site_url('admin/dashboard') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                            <li><a href="<?php echo site_url('admin/monitoring') ?>"><i class="fa fa-newspaper-o"></i> <span>Monitoring</span></a></li>
+                            <!-- <li><a href="<?php echo site_url('admin/monitoring') ?>"><i class="fa fa-newspaper-o"></i> <span>Monitoring</span></a></li> -->
                             <li class="header">Menu Antrian</li>
                             <li><a href="<?php echo site_url('admin/kontrol') ?>"> <i class="fa fa-circle-o text-green"></i> <span>Kontrol Antrian</span></a></li>
                             <li><a href="<?php echo site_url('admin/riwayat') ?>"> <i class="fa fa-user-o"></i> <span>Riwayat Antrian Pasien</span></a></li>
@@ -129,7 +129,7 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="header">Main Menu</li>
                             <li class="active"><a href="<?php echo site_url('admin/dashboard') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                            <li class="header">Queue Menu</li>
+                            <li class="header">Menu Antrian</li>
                             <li><a href="<?php echo site_url('admin/kontrol') ?>"> <i class="fa fa-circle-o text-green"></i> Kontrol Antrian<span></span></a></li>
                             <li><a href="<?php echo site_url('admin/riwayat') ?>"> <i class="fa fa-user-o"></i> Riwayat Antrian Pasien<span></span></a></li>
                             <li class="header">Others Menu</li>

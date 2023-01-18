@@ -66,7 +66,7 @@
                             <table class="table table-bordered">
                                 <tr style="background-color: gray;color:white">
                                     <th style="width: 60px">No</th>
-                                    <th style="width: 20%">#aksi</th>
+                                    <th style="width: 10%">#aksi</th>
                                     <th>Message</th>
                                     <th>Time</th>
                                     <th>Executor</th>
@@ -86,7 +86,7 @@
                                             </td>
                                             <td><?php echo $key->log_message; ?></td>
                                             <td><?php echo $key->log_time; ?></td>
-                                            <td><?php echo $key->user_name; ?></td>
+                                            <td><?php echo $key->user_fullname; ?></td>
                                             <td><?php echo $key->log_ipaddress; ?></td>
                                         </tr>
 
