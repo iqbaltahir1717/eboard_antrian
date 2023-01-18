@@ -4,7 +4,8 @@
                 &copy; Copyright <strong><span><?php echo $setting[0]->setting_owner_name; ?></span></strong>. All Rights Reserved
             </div>
         </div>
-    </footer><!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
     <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
     <div id="preloader"></div>
@@ -18,8 +19,6 @@
         $(document).ready(function() {
             $('#tabel-data').DataTable();
         });
-
-        
     </script>
 
     <!-- Vendor JS Files -->

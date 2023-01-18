@@ -15,7 +15,11 @@
                         <!-- <li class="active"><a href="#">Pukul <span id="jam"></span> : <span id="menit"></span> : <span id="detik"></span></a></li> -->
                         <?php if ($this->session->userdata('user_fullname')) { ?>
                             <?php if (!$profile_antrian) { ?>
-                                <li class="mt-1"><a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalAntrian">Ambil Antrian</a></li>
+                                <?php if (date('h:i') >= $setting[0]->setting_jam_bukas and  date('h:i') <= $setting[0]->setting_jam_tutups) { ?>
+                                    <li class="mt-1"><a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalAntrian">Ambil Antrian</a></li>
+                                <?php } else { ?>
+                                    <li class="mt-1"><button disabled>Antrian Tutup</button></li>
+                                <?php } ?>
                             <?php } else { ?>
                                 <li class="mt-1"><a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalNomor">Nomor Antrian Anda</a></li>
                             <?php } ?>

@@ -18,7 +18,9 @@ class Eboard extends CI_Controller
 		$data['spesialis']   = $this->m_spesialis->read('', '', '');
 		$data['antrian']   = $this->m_antrian->read('', '', '');
 		$data['dokter']   = $this->m_user->read_group('', '', '', 4);
-
+		if ($data['antrian']) {
+			$data['total_antrian'] = count($data['antrian']);
+		} else $data['total_antrian'] = 0;
 		$data['profile'] = $this->m_user->get($this->session->userdata('user_id'));
 		$data['profile_antrian']   = $this->m_antrian->get($this->session->userdata('user_id'));
 

@@ -6,13 +6,28 @@
         </div>
     <?php } ?>
 
-    <?php foreach ($spesialis as $s) {  ?>
+    <!-- <?php foreach ($spesialis as $s) {  ?>
         <div class="col-lg-2 box-item ">
             <h3 id="antrian-next<?= $s->spesialis_id ?>"><?php echo $s->spesialis_kode_antrian . $s->antrian_saat_ini + 1; ?></h3>
             <h4>Antrian Berikutnya
             </h4>
         </div>
-    <?php } ?>
+    <?php } ?> -->
+    <div class="col-lg-4 box-item" style="padding:0">
+        <iframe width="100%" height="100%" autoplay src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&controls=0">
+        </iframe>
+    </div>
+    <div class="col-lg-4 box-item" style="padding:0">
+        <h5>
+            Waktu Buka Antrian <br>
+            <p class="badge badge-success" style="font-size: 25px !important"> <?= date('H:i', strtotime($setting[0]->setting_jam_buka)) . ' - ' .  date('H:i', strtotime($setting[0]->setting_jam_tutup)); ?> WITA</p>
+        </h5>
+        <h5>
+            Waktu Saat Ini
+            <p style="font-size: 45px !important"> <span id="jam"></span> : <span id="menit"></span> : <span id="detik"></span> WITA</p>
+        </h5>
+
+    </div>
 </section>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -164,4 +179,16 @@
         },
         "retina_detect": true
     });
+</script>
+
+<script>
+    window.setTimeout("waktu()", 1000);
+
+    function waktu() {
+        var waktu = new Date();
+        setTimeout("waktu()", 1000);
+        document.getElementById("jam").innerHTML = waktu.getHours();
+        document.getElementById("menit").innerHTML = waktu.getMinutes();
+        document.getElementById("detik").innerHTML = waktu.getSeconds();
+    }
 </script>
