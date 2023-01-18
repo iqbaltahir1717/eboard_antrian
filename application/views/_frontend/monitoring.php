@@ -13,10 +13,10 @@
             </h4>
         </div>
     <?php } ?> -->
-    <div class="col-lg-4 box-item" style="padding:0">
+    <!-- <div class="col-lg-4 box-item" style="padding:0">
         <iframe width="100%" height="100%" autoplay src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&controls=0">
         </iframe>
-    </div>
+    </div> -->
     <div class="col-lg-4 box-item" style="padding:0">
         <h5>
             Waktu Buka Antrian <br>

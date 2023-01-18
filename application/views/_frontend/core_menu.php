@@ -18,11 +18,14 @@
                                 <?php if (date('h:i') >= $setting[0]->setting_jam_bukas and  date('h:i') <= $setting[0]->setting_jam_tutups) { ?>
                                     <li class="mt-1"><a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalAntrian">Ambil Antrian</a></li>
                                 <?php } else { ?>
-                                    <li class="mt-1"><button disabled>Antrian Tutup</button></li>
+                                    <li class="mt-1"><a href="#" style="cursor: no-drop;">Antrian Tutup</a></li>
                                 <?php } ?>
                             <?php } else { ?>
                                 <li class="mt-1"><a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalNomor">Nomor Antrian Anda</a></li>
                             <?php } ?>
+
+                            <li class="mt-1"><a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalHelp">Bantuan</a></li>
+                            <li class="mt-1"><a onclick="return confirm('Apa kamu yakin untuk keluar?');" href="<?php echo site_url('auth/logout') ?>">Log-out</a></li>
                             <li>
                                 <a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalProfile">
                                     <?php if ($profile[0]->user_photo == "") { ?>
@@ -31,12 +34,13 @@
                                         <img style="width:30px; border-radius:50%;" src="<?= base_url() . '/upload/user/' . $profile[0]->user_photo; ?>" alt=""> &nbsp;&nbsp;<?= $profile[0]->user_fullname ?>
                                     <?php
                                     } ?>
-                            <li class="mt-1"><a onclick="return confirm('Apa kamu yakin untuk keluar?');" href="<?php echo site_url('auth/logout') ?>">Log-out</a></li>
-                            </a>
+                                </a>
                             </li>
                         <?php } else { ?>
                             <li><a href="<?php echo site_url('auth') ?>">Log-in</a></li>
+                            <li><a type="button" href="#" data-dismiss="modal" data-toggle="modal" data-target="#modalHelp">Bantuan</a></li>
                         <?php } ?>
+
                     </ul>
                 </nav><!-- .nav-menu -->
             </div>
@@ -152,6 +156,28 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalHelp" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="ture">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="" role="document">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Bantuan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="box-card">
+                        <?= $setting[0]->setting_help ?>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <h6 class="modal-title" id="exampleModalLabel">&#169; <?php echo $setting[0]->setting_appname; ?></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="<?php echo base_url() ?>assets/core-front/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <?php if ($profile_antrian) { ?>
         <script>
