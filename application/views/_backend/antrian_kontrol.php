@@ -45,7 +45,6 @@
                     ?>
                             <tr>
                                 <td><b><?php echo str_replace('-', '', $key->antrian_nomor); ?></b></td>
-
                                 <td><?php echo $key->user_fullname; ?></td>
                                 <td><?php echo $key->spesialis_nama; ?></td>
                                 <td><?php echo date("H:i", strtotime($key->arrival_time)); ?></td>
@@ -97,13 +96,13 @@
                 <div class="box-footer">
                     <!-- COUNT DATA -->
                     <?php if ($antrian) { ?>
-                        <div class="float-left">Jumlah yang sedang dalam antrian <?php echo ($no - 1); ?> Pasien dari <?php echo $setting[0]->setting_max_antrian ?> max antrian</div>
-                    <?php } else { ?>
-                        <div class="float-left">Tampil 0 <?php echo " dari " . $total_antrian; ?> Data</div>
-                    <?php } ?>
-                    <small>Memuat Halaman <strong>{elapsed_time}</strong> detik.</small>
+                        <div class="float-left">Jumlah yang sedang dalam antrian <?php echo ($no - 1); ?> Pasien
+                        <?php } else { ?>
+                            <div class="float-left">Tampil 0 <?php echo " dari " . $total_antrian; ?> Data</div>
+                        <?php } ?> <br>
+                        <small>Memuat Halaman <strong>{elapsed_time}</strong> detik.</small>
+                        </div>
                 </div>
-            </div>
 
     </section>
     <section class="content col-lg-5">
@@ -134,7 +133,7 @@
                         <tr>
                             <td style="width: 50%"><?= $key->spesialis_nama ?></td>
                             <td style="width: 15%"><?= $key->spesialis_kode_antrian ?><?= $key->antrian_saat_ini ?></td>
-                            <td style="width: 35%">
+                            <td style="width: 25%">
                                 <div style="display: flex; justify-content: space-around;">
                                     <!-- next -->
                                     <?php echo form_open("admin/kontrol/selesai") ?>
@@ -144,12 +143,12 @@
                                     <button type="submit" title="Selanjutnya" class="btn btn-sm btn-primary"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
                                     <?php echo form_close(); ?>
                                     <!-- next -->
-                                    <?php echo form_open("admin/kontrol/callback") ?>
+                                    <!-- <?php echo form_open("admin/kontrol/callback") ?>
                                     <?php echo csrf(); ?>
                                     <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_saat_ini  ?>">
                                     <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
                                     <button type="submit" title="panggil ulang" class="btn btn-sm btn-primary"><i class="fa fa-volume-up" aria-hidden="true"></i></button>
-                                    <?php echo form_close(); ?>
+                                    <?php echo form_close(); ?> -->
                                     <!-- skip -->
                                     <?php echo form_open("admin/kontrol/lewati") ?>
                                     <?php echo csrf(); ?>

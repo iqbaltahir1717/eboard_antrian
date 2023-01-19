@@ -31,7 +31,10 @@ class Kontrol extends CI_Controller
 		if ($data['antrian']) {
 			$data['total_antrian'] = count($data['antrian']);
 		} else $data['total_antrian'] = 0;
-
+		// echo "<pre>";
+		// print_r($data['antrian']);
+		// echo "</pre>";
+		// die;
 		// TEMPLATE
 		$view         = "_backend/antrian_kontrol";
 		$viewCategory = "all";

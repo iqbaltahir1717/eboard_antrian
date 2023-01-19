@@ -10,10 +10,12 @@ class M_antrian extends CI_Model
 
     public function read($limit, $start, $key)
     {
+        $date = date('Y-m-d');
         $this->db->select('a.*, b.user_fullname, c.spesialis_nama');
         $this->db->from('tbl_antrian a');
         $this->db->join('tbl_user b', 'a.user_id=b.user_id', 'LEFT');
         $this->db->join('tbl_spesialis c', 'a.spesialis_id=c.spesialis_id', 'LEFT');
+        $this->db->where('a.createtime =', $date);
         $this->db->order_by('a.antrian_nomor', 'ASC');
 
         if ($key != '') {
