@@ -169,7 +169,7 @@ class Kontrol extends CI_Controller
 
 		if ($nomor[1] != 0) {
 			foreach ($datas['antrian']  as $key) {
-				if ($key->antrian_nomor == $nomor_antrian) {
+				if ($key->antrian_nomor == $nomor[1]) {
 					$data['riwayat_antrian_id']       = '';
 					$data['user_id'] = $key->user_id;
 					$data['spesialis_id'] = $key->spesialis_id;
@@ -212,8 +212,6 @@ class Kontrol extends CI_Controller
 			}
 		} else {
 			$data_nomor_berikutnya = $nomor[1] + 1;
-
-
 
 			foreach ($datas['antrian']  as $key) {
 				$nomor_antrian = $nomor[0] . '-' .  $data_nomor_berikutnya;
