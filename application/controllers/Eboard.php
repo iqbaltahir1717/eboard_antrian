@@ -60,6 +60,7 @@ class Eboard extends CI_Controller
 		} else $jumlah_antrian = 0;
 
 
+
 		if ($jumlah_antrian <= $setting[0]->setting_max_antrian) {
 			// $result           = $this->m_antrian->validate(str_replace(' ', '', $this->db->escape_str($this->input->post('user_id'))));
 
@@ -70,8 +71,6 @@ class Eboard extends CI_Controller
 						$antrian = end($last);
 						$last_antrian = $antrian->antrian_nomor;
 					} else $last_antrian = 0;
-
-
 					if ($last_antrian > 0) {
 						$last_antrian_nomor = explode('-', $last_antrian);
 						$last_antrian_kode_get =  $last_antrian_nomor[0];
@@ -90,15 +89,21 @@ class Eboard extends CI_Controller
 				$ouput_nomor[] = [$antrian_nomor];
 			}
 
+
 			$data['user_id']  = $this->session->userdata('user_id');
 			$data['spesialis_id']     = $this->input->post('spesialis_id');
 			$data['arrival_time']     = date('Y-m-d H:i:s');
 			$data['createtime']     = date('Y-m-d');
 			$data['antrian_nomor']     = $ouput_nomor[$this->input->post('spesialis_id') - 1][0];
 
+			// echo "<pre>";
+			// print_r($data['antrian_nomor']);
+			// echo "</pre>";
+			// die;
+
 			if ($datas["antrian"]) {
 				foreach ($datas["antrian"] as $key) {
-					if ($this->session->userdata('user_name') == $key->user_name) {
+					if ($this->session->userdata('user_id') == $key->user_id) {
 						// ALERT
 						$alertStatus  = "failed";
 						$alertMessage = "Anda sudah dalam antrian";
@@ -108,10 +113,7 @@ class Eboard extends CI_Controller
 				}
 			}
 
-			// echo "<pre>";
-			// print_r($datas['antrian']);
-			// echo "</pre>";
-			// die;
+
 
 			$this->m_antrian->create($data);
 
@@ -127,6 +129,7 @@ class Eboard extends CI_Controller
 			$alertStatus  = "failed";
 			$alertMessage = "Antrian Penuh !!!";
 		}
+
 		getAlert($alertStatus, $alertMessage);
 		redirect('eboard');
 	}

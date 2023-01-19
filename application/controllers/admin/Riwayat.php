@@ -125,7 +125,6 @@ class Riwayat extends CI_Controller
             $data["la"] = abs(pow($y, 2) / ($n * ($n - $y)));
             $data["ws"] = abs(1 / ($n - $y));
             $data["wa"] = abs($y  / ($n * ($n - $y)));
-            
         } else {
             // ALERT
             $alertStatus  = 'failed';
