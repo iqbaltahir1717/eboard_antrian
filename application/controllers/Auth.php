@@ -110,11 +110,9 @@ class Auth extends CI_Controller
 		if ($this->input->post('user_password') == $this->input->post('password_confirm')) {
 			// POST
 			$data['user_id']        = '';
-			$data['user_name']      = strtolower(str_replace(' ', '', $this->input->post('user_fullname')));
 			$data['user_password']  = password_hash($this->input->post('user_password'), PASSWORD_BCRYPT);
 			$data['user_lastlogin'] = '';
 			$data['user_photo']     = '';
-			$data['user_email']     = '';
 			$data['group_id']       = 3;
 			$data['createtime']     = date('Y-m-d H:i:s');
 			$this->m_user->create($data);
