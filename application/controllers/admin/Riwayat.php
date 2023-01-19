@@ -64,7 +64,7 @@ class Riwayat extends CI_Controller
             $total_data = count($data['riwayat']);
             $data["total_data"] =  $total_data;
 
-            //average
+            //average rata-rata tiap data
             $array = array(1, 2, 3, 4, 5, 6);
             $i = 10;
             foreach ($array as $f) {
@@ -125,11 +125,7 @@ class Riwayat extends CI_Controller
             $data["la"] = abs(pow($y, 2) / ($n * ($n - $y)));
             $data["ws"] = abs(1 / ($n - $y));
             $data["wa"] = abs($y  / ($n * ($n - $y)));
-
-            // echo '<pre>';
-            // print_r(round($y, 3));
-            // echo '<pre>';
-            // die;
+            
         } else {
             // ALERT
             $alertStatus  = 'failed';

@@ -93,6 +93,7 @@ class Eboard extends CI_Controller
 			$data['user_id']  = $this->session->userdata('user_id');
 			$data['spesialis_id']     = $this->input->post('spesialis_id');
 			$data['arrival_time']     = date('Y-m-d H:i:s');
+			$data['createtime']     = date('Y-m-d');
 			$data['antrian_nomor']     = $ouput_nomor[$this->input->post('spesialis_id') - 1][0];
 
 			if ($datas["antrian"]) {

@@ -19,13 +19,13 @@
                 <div class="box-tools pull-right">
                     <div style="padding-top:10px">
                         <a href="<?php echo site_url('admin/monitoring') ?>" class="btn btn-success btn-flat" title="Refresh halaman">refresh</a>
-                        <?php if ($total_antrian == $setting[0]->setting_max_antrian) { ?>
+                        <!-- <?php if ($total_antrian == $setting[0]->setting_max_antrian) { ?>
                             <button disabled class="btn btn-primary btn-flat"> Antrian Penuh</button>
                         <?php } else if (date('h:i') >= $setting[0]->setting_jam_bukas and  date('h:i') <= $setting[0]->setting_jam_tutups) { ?>
                             <button data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-flat" title="Refresh halaman">Ambil Antrian</button>
                         <?php } else { ?>
                             <button disabled class="btn btn-primary btn-flat">Ambil Antrian</button>
-                        <?php } ?>
+                        <?php } ?> -->
                     </div>
 
                     <!-- Modal-->
