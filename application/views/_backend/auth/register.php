@@ -67,7 +67,7 @@
             </div>
             <div class="form-group has-feedback">
                 <?php echo csrf(); ?>
-                <input type="email" class="form-control" placeholder="Nomor Telpon" name="user_phone" required value="<?= $user_phone ?>">
+                <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" required value="<?= $user_phone ?>">
             </div>
             <div class="form-group has-feedback">
                 <input type="password" class="form-control" placeholder="Masukkan Password" name="user_password" required value="<?= $user_password ?>">
