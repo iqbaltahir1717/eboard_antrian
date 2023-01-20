@@ -37,6 +37,24 @@ class M_antrian extends CI_Model
         return null;
     }
 
+    public function check_data_count($psesialis)
+    {
+        $this->db->select('a.*, b.user_fullname, c.spesialis_nama');
+        $this->db->from('tbl_antrian a');
+        $this->db->join('tbl_user b', 'a.user_id=b.user_id', 'LEFT');
+        $this->db->join('tbl_spesialis c', 'a.spesialis_id=c.spesialis_id', 'LEFT');
+        $this->db->where('a.spesialis_id =', $psesialis);
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return null;
+    }
+
     public function create($data)
     {
         $this->db->insert('tbl_antrian', $data);

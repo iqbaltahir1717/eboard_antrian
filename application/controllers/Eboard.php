@@ -45,6 +45,7 @@ class Eboard extends CI_Controller
 
 	public function create_antrian()
 	{
+
 		csrfValidate();
 		$setting = getSetting();
 		$kode_antrian                = "FN-" . date('YmdHis') . $this->session->userdata('user_id');
@@ -53,17 +54,15 @@ class Eboard extends CI_Controller
 		$data['antrian_kode']        = $kode_antrian;
 		$datas['spesialis']   = $this->m_spesialis->read('', '', '');
 		$datas['antrian']   = $this->m_antrian->read('', '', '');
+		$datas['antrian_check']   = $this->m_antrian->check_data_count($this->input->post('spesialis_id'));
 		$last_antrian = 0;
 
-		if ($datas['antrian']) {
-			$jumlah_antrian	 = count($datas['antrian']);
+		if ($datas['antrian_check']) {
+			$jumlah_antrian	 = count($datas['antrian_check']);
 		} else $jumlah_antrian = 0;
-
-
 
 		if ($jumlah_antrian <= $setting[0]->setting_max_antrian) {
 			// $result           = $this->m_antrian->validate(str_replace(' ', '', $this->db->escape_str($this->input->post('user_id'))));
-
 			foreach ($datas["spesialis"] as $key) {
 				if ($this->input->post('spesialis_id') == $key->spesialis_id) {
 					$last   = $this->m_antrian->get_antrian($this->input->post('spesialis_id'));
@@ -112,9 +111,6 @@ class Eboard extends CI_Controller
 					}
 				}
 			}
-
-
-
 			$this->m_antrian->create($data);
 
 			// LOG
