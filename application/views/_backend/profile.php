@@ -32,11 +32,6 @@
                                     }
                                     ?>
                                     <h3 class="profile-username text-center"><?php echo $profile[0]->user_fullname; ?></h3>
-                                    <br>
-                                    <strong><i class="fa fa-circle-o text-red"></i> Username</strong>
-                                    <p class="text-muted">
-                                        <?php echo $profile[0]->user_name; ?>
-                                    </p>
                                     <hr style="border: 0.5px dashed #d2d6de">
 
                                     <strong><i class="fa fa-circle-o text-red"></i> Nomor Telpon</strong>
@@ -95,13 +90,6 @@
                                         </div>
 
                                         <hr style="border: 0.5px dashed #d2d6de">
-                                        <div class="form-group">
-                                            <label for="inputName" class="col-sm-2 control-label">Username</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" placeholder="Nama User" name="user_name" value="<?php echo $profile[0]->user_name; ?>" required>
-                                            </div>
-                                        </div>
-
                                         <div class="form-group">
                                             <label for="inputName" class="col-sm-2 control-label">Password</label>
                                             <div class="col-sm-10">

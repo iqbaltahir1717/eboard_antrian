@@ -142,13 +142,13 @@
                                     <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
                                     <button type="submit" title="Selanjutnya" class="btn btn-sm btn-primary"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
                                     <?php echo form_close(); ?>
-                                    <!-- next -->
-                                    <!-- <?php echo form_open("admin/kontrol/callback") ?>
+                                    <!-- reload -->
+                                    <?php echo form_open("admin/kontrol/callback") ?>
                                     <?php echo csrf(); ?>
                                     <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_saat_ini  ?>">
                                     <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
-                                    <button type="submit" title="panggil ulang" class="btn btn-sm btn-primary"><i class="fa fa-volume-up" aria-hidden="true"></i></button>
-                                    <?php echo form_close(); ?> -->
+                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> type="submit" title="start service" class="btn btn-sm btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                                    <?php echo form_close(); ?>
                                     <!-- skip -->
                                     <?php echo form_open("admin/kontrol/lewati") ?>
                                     <?php echo csrf(); ?>

@@ -47,6 +47,11 @@ class M_antrian extends CI_Model
         $this->db->update('tbl_antrian', $data, array('antrian_kode' => $data['antrian_kode']));
     }
 
+    public function update_antrian_berikutnya($data)
+    {
+        $this->db->update('tbl_antrian', $data, array('antrian_nomor' => $data['antrian_nomor']));
+    }
+
     public function delete($data)
     {
         $this->db->delete('tbl_antrian', array('antrian_kode' => $data['antrian_kode']));
