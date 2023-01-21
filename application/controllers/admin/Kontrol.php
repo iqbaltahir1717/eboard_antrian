@@ -146,6 +146,8 @@ class Kontrol extends CI_Controller
 
 		$datas['antrian']   = $this->m_antrian->read('', '', '');
 
+		// echo $this->input->post('antrian_saat_ini');
+		// die;
 
 		if ($datas['antrian']) {
 			$data_nomor_saat_ini = $nomor[1];
@@ -153,20 +155,13 @@ class Kontrol extends CI_Controller
 			if ($data_nomor_saat_ini > 0) {
 				foreach ($datas['antrian']  as $key) {
 					$nomor_antrian = $nomor[0] . '-' .  $data_nomor_saat_ini;
-					if ($key->antrian_nomor == $nomor_antrian) {
-						$data2['antrian_kode']       = $key->antrian_kode;
+					if ($key->antrian_nomor == $this->input->post('antrian_saat_ini')) {
+						$data2['antrian_nomor']       = $key->antrian_nomor;
 						$this->m_antrian->delete($data2);
-
-						$datas2['antrian_kode']       = $key->antrian_kode;
-						$datas2['service_start_time']       = date('H:i:s');
-						$datas2['antrian_status']       = 'start_service';
-						$this->m_antrian->update($datas2);
-					} else {
-						// ALERT
-						$alertStatus  = "failed";
-						$alertMessage = "Tidak Terdapat Antrian !!";
-						getAlert($alertStatus, $alertMessage);
-						redirect('admin/kontrol');
+						// $datas2['antrian_kode']       = $key->antrian_kode;
+						// $datas2['service_start_time']       = date('H:i:s');
+						// $datas2['antrian_status']       = 'start_service';
+						// $this->m_antrian->update($datas2);
 					}
 				}
 				foreach ($datas['antrian']  as $key) {
@@ -189,7 +184,7 @@ class Kontrol extends CI_Controller
 		} else {
 			// ALERT
 			$alertStatus  = "failed";
-			$alertMessage = "Tidak Terdapat Antrian !!";
+			$alertMessage = "Tidak Terdapat Antrian!!";
 			getAlert($alertStatus, $alertMessage);
 			redirect('admin/kontrol');
 		}

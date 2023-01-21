@@ -53,6 +53,7 @@
                                 <td>
                                     <span class="label label-<?php if ($key->antrian_status == 'end_service') echo 'danger';
                                                                 else if ($key->antrian_status == 'start_service') echo 'warning';
+                                                                else if ($key->antrian_status == 'terhapus') echo 'default';
                                                                 else echo 'success' ?>
                                                                 "><?php echo $key->antrian_status; ?></span>
                                 </td>
@@ -154,7 +155,7 @@
                                     <?php echo csrf(); ?>
                                     <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_saat_ini  ?>">
                                     <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
-                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> <?php if ($total_antrian < $key->antrian_saat_ini) echo 'disabled' ?> type="submit" title="Selanjutnya" class="btn btn-sm btn-danger">Lewati</button>
+                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> type="submit" title="Selanjutnya" class="btn btn-sm btn-danger">Lewati</button>
                                     <?php echo form_close(); ?>
                                 </div>
                             </td>
