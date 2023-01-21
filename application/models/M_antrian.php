@@ -72,7 +72,7 @@ class M_antrian extends CI_Model
 
     public function delete($data)
     {
-        $this->db->delete('tbl_antrian', array('antrian_kode' => $data['antrian_kode']));
+        $this->db->delete('tbl_antrian', array('antrian_nomor' => $data['antrian_nomor']));
     }
 
     // public function get($id)

@@ -206,61 +206,68 @@ class Kontrol extends CI_Controller
 		if ($datas['antrian']) {
 			if ($nomor[1] != 0) {
 				foreach ($datas['antrian']  as $key) {
-					$data['riwayat_antrian_id']       = '';
-					$data['user_id'] = $key->user_id;
-					$data['spesialis_id'] = $key->spesialis_id;
-					$data['antrian_nomor'] = str_replace(
-						'-',
-						'',
-						$nomor_antrian
-					);
-					$data['arrival_time']       = $key->arrival_time;
-					$data['service_start_time']       =  $key->service_start_time;
-					$data['service_end_time']       =  date('H:i:s');
-					$data['createtime']       = date('Y-m-d');
-					$this->m_riwayat->create($data);
-					if ($this->input->post('antrian_saat_ini') > 0) {
-						$data3['antrian_kode']  = '';
-						$data3['antrian_status'] = '';
-						$data3['service_end_time'] = '';
-						foreach ($datas['antrian'] as $key) {
-							$nomor_antrian = $this->input->post('antrian_saat_ini');
+					if ($key->antrian_nomor == $this->input->post('antrian_saat_ini')) {
+						$data['riwayat_antrian_id']       = '';
+						$data['user_id'] = $key->user_id;
+						$data['spesialis_id'] = $key->spesialis_id;
+						$data['antrian_nomor'] = str_replace(
+							'-',
+							'',
+							$nomor_antrian
+						);
+						$data['arrival_time']       = $key->arrival_time;
+						$data['service_start_time']       =  $key->service_start_time;
+						$data['service_end_time']       =  date('H:i:s');
+						$data['createtime']       = date('Y-m-d');
+						$this->m_riwayat->create($data);
+						if ($this->input->post('antrian_saat_ini') > 0) {
+							$data3['antrian_kode']  = '';
+							$data3['antrian_status'] = '';
+							$data3['service_end_time'] = '';
+							foreach ($datas['antrian'] as $key) {
+								$nomor_antrian = $this->input->post('antrian_saat_ini');
 
-							if ($key->antrian_nomor == $nomor_antrian) {
-								$data3['antrian_kode']       = $key->antrian_kode;
-								$data3['antrian_status']       = 'end_service';
-								$data3['service_end_time']       =  date('H:i:s');
+								if ($key->antrian_nomor == $nomor_antrian) {
+									$data3['antrian_kode']       = $key->antrian_kode;
+									$data3['antrian_status']       = 'end_service';
+									$data3['service_end_time']       =  date('H:i:s');
+								}
 							}
-						}
-						if ($data3['antrian_kode'] == '') {
-							// ALERT
-							$alertStatus  = "failed";
-							$alertMessage = "Tidak Terdapat Antrian !!";
-							getAlert($alertStatus, $alertMessage);
-							redirect('admin/kontrol');
-						}
-						$this->m_antrian->update($data3);
-						foreach ($datas['antrian'] as $key) {
-							$nomor_antrian = $this->input->post('antrian_saat_ini');
-							if ($key->antrian_nomor == $nomor_antrian) {
-								$nomor_antrian_berikutnya = explode('-', $key->antrian_nomor);
-								$data4['antrian_nomor']       = $nomor_antrian_berikutnya[0] . '-' . $nomor_antrian_berikutnya[1] + 1;
-								$data4['service_start_time']       =  date('H:i:s');
-								$data4['antrian_status']       = 'start_service';
+							if ($data3['antrian_kode'] == '') {
+								// ALERT
+								$alertStatus  = "failed";
+								$alertMessage = "Tidak Terdapat Antrian !!";
+								getAlert($alertStatus, $alertMessage);
+								redirect('admin/kontrol');
 							}
+							$this->m_antrian->update($data3);
+							foreach ($datas['antrian'] as $key) {
+								$nomor_antrian = $this->input->post('antrian_saat_ini');
+								if ($key->antrian_nomor == $nomor_antrian) {
+									$nomor_antrian_berikutnya = explode('-', $key->antrian_nomor);
+									$data4['antrian_nomor']       = $nomor_antrian_berikutnya[0] . '-' . $nomor_antrian_berikutnya[1] + 1;
+									$data4['service_start_time']       =  date('H:i:s');
+									$data4['antrian_status']       = 'start_service';
+								}
+							}
+							$this->m_antrian->update_antrian_berikutnya($data4);
 						}
-						$this->m_antrian->update_antrian_berikutnya($data4);
+
+						$data2['antrian_berjalan_id']       = $this->input->post('antrian_berjalan_id');
+						$nomor = explode('-', $this->input->post('antrian_saat_ini'));
+						$data2['antrian_saat_ini'] = $nomor[1] + 1;
+
+						// POST
+						$this->m_antrian_saat_ini->update($data2);
+
+						redirect('admin/kontrol');
 					}
-
-					$data2['antrian_berjalan_id']       = $this->input->post('antrian_berjalan_id');
-					$nomor = explode('-', $this->input->post('antrian_saat_ini'));
-					$data2['antrian_saat_ini'] = $nomor[1] + 1;
-
-					// POST
-					$this->m_antrian_saat_ini->update($data2);
-
-					redirect('admin/kontrol');
 				}
+				// ALERT
+				$alertStatus  = "failed";
+				$alertMessage = "Tidak Terdapat Antrian !!";
+				getAlert($alertStatus, $alertMessage);
+				redirect('admin/kontrol');
 			} else {
 				$data_nomor_berikutnya = $nomor[1] + 1;
 

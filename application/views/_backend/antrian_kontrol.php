@@ -152,9 +152,9 @@
                                     <!-- skip -->
                                     <?php echo form_open("admin/kontrol/lewati") ?>
                                     <?php echo csrf(); ?>
-                                    <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_berjalan_id  ?>">
+                                    <input type="hidden" name="antrian_saat_ini" value="<?= $key->spesialis_kode_antrian . '-' . $key->antrian_saat_ini  ?>">
                                     <input type="hidden" type="hidden" name="antrian_berjalan_id" value="<?= $key->antrian_berjalan_id ?>">
-                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> type="submit" title="Selanjutnya" class="btn btn-sm btn-danger">Lewati</button>
+                                    <button <?php if ($key->antrian_saat_ini < 1) echo 'disabled' ?> <?php if ($total_antrian < $key->antrian_saat_ini) echo 'disabled' ?> type="submit" title="Selanjutnya" class="btn btn-sm btn-danger">Lewati</button>
                                     <?php echo form_close(); ?>
                                 </div>
                             </td>
