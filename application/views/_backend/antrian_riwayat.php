@@ -156,7 +156,7 @@
             <div class="box-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-6">
+                        <!-- <div class="col-lg-6">
                             <p><b>Waktu rata-rata pasien menunggu dalam antrian (TIQ)</b></p>
                             <p>Rata-Rata TIQ = <?= $menunggu[0][1] . " Menit / " . $total_data; ?> Pasien</p>
                             (x) = <?= $menunggu[0][0]; ?> Menit
@@ -167,7 +167,7 @@
                             <p>Rata-Rata TIS = <?= $menunggu[1][1] . " Menit / " . $total_data; ?> Pasien</p>
                             (y) = <?= $menunggu[1][0]; ?> Menit
                             <hr>
-                        </div>
+                        </div> -->
                         <div class="col-lg-6">
                             <h4><b>Tingkat kedatangan rata-rata persatuan waktu (AT)</b></h4>
                             <p>AT = <?= $averages[0][0] ?> => <?= $tingkat[0][1] . " Menit / " . $total_data . " Pasien"; ?> </p>

@@ -48,7 +48,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <img src="<?php echo base_url(); ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>" alt="" width="30%">
+            <img src="<?php echo base_url(); ?>assets/core-front/img/Untitled-1.png" alt="" width="100%">
         </div>
 
         <div class="login-box-body">
