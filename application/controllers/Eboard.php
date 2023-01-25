@@ -203,7 +203,7 @@ class Eboard extends CI_Controller
 		// echo $this->input->post('antrian_kode');
 		// die;
 		$data['antrian_kode'] = $this->input->post('antrian_kode');
-		$this->m_antrian->delete($data);
+		$this->m_antrian->delete_eboard($data);
 
 		// LOG
 		$message    = $this->session->userdata('user_name') . " menghapus data antrian dengan kode = " . $this->input->post('antrian_kode') . " - " . $this->input->post('antrian_kode');
