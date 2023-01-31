@@ -181,6 +181,9 @@ class User extends CI_Controller
         $data['user_password']  = password_hash($this->input->post('user_password'), PASSWORD_BCRYPT);
         $data['user_fullname']  = $this->input->post('user_fullname');
         $data['user_phone']     = $this->input->post('user_phone');
+        $data['user_alamat']     = $this->input->post('user_alamat');
+        $data['user_umur']     = $this->input->post('user_umur');
+        $data['user_jk']     = $this->input->post('user_jk');
         $data['user_lastlogin'] = '';
         $data['user_photo']     = '';
         $data['group_id']       = $this->input->post('group_id');
@@ -218,6 +221,9 @@ class User extends CI_Controller
         $data['user_fullname'] = $this->input->post('user_fullname');
         $data['user_phone']    = $this->input->post('user_phone');
         $data['group_id']      = $this->input->post('group_id');
+        $data['user_alamat']     = $this->input->post('user_alamat');
+        $data['user_umur']     = $this->input->post('user_umur');
+        $data['user_jk']     = $this->input->post('user_jk');
         $this->m_user->update($data);
 
         $data['group_name']     = $this->input->post('group_name');

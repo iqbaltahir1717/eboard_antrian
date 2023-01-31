@@ -109,6 +109,9 @@ class Profile extends CI_Controller
         $data['user_id']       = $this->input->post('user_id');
         $data['user_fullname'] = $this->input->post('user_fullname');
         $data['user_phone'] = $this->input->post('user_phone');
+        $data['user_alamat'] = $this->input->post('user_alamat');
+        $data['user_umur'] = $this->input->post('user_umur');
+        $data['user_jk'] = $this->input->post('user_jk');
         $this->m_user->update($data);
 
         // SET SESSION
@@ -116,6 +119,9 @@ class Profile extends CI_Controller
             'user_fullname'   => $data['user_fullname'],
             'user_photo'      => $data['user_photo'],
             'user_phone'      => $data['user_phone'],
+            'user_alamat'      => $data['user_alamat'],
+            'user_umur'      => $data['user_umur'],
+            'user_jk'      => $data['user_jk'],
         );
         $this->session->set_userdata($session);
 

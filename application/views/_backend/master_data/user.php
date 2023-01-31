@@ -72,6 +72,22 @@
                                                     <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" required="required">
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for=""><b style="color: black">Alamat<span style="color:red">*</span></b></label>
+                                                    <input type="text" class="form-control" placeholder="Alamat" name="user_alamat" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for=""><b style="color: black">Umur <span style="color:red">*</span></b></label>
+                                                    <input type="number" class="form-control" placeholder="Umur" name="user_umur" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for=""><b style="color: black">Jenis Kelamin <span style="color:red">*</span></b></label>
+                                                    <select class="form-control" name="user_jk" required>
+                                                        <option value="">- Jenis Kelamin -</option>
+                                                        <option value="Laki-Laki">Laki-Laki</option>
+                                                        <option value="Perempuan">Perempuan</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for=""><b style="color: black">Group <span style="color:red">*</span></b></label>
                                                     <select class="form-control" name="group_id" required>
                                                         <option value="">- Pilih Group -</option>
@@ -116,6 +132,9 @@
                                     <th style="width: 20%">#aksi</th>
                                     <th>Nama</th>
                                     <th>Nomor Telpon</th>
+                                    <th>Alamat</th>
+                                    <th>Umur</th>
+                                    <th>Jenis Kelamin</th>
                                     <th>Group</th>
                                 </tr>
                                 <?php
@@ -133,6 +152,9 @@
                                             </td>
                                             <td><?php echo $key->user_fullname; ?></td>
                                             <td><?php echo $key->user_phone; ?></td>
+                                            <td><?php echo $key->user_alamat; ?></td>
+                                            <td><?php echo $key->user_umur; ?></td>
+                                            <td><?php echo $key->user_jk; ?></td>
                                             <td><?php echo $key->group_name; ?></td>
                                         </tr>
 
@@ -158,6 +180,24 @@
                                                         <div class="form-group">
                                                             <label for=""><b style="color: black">Nomor Telpon <span style="color:red">*</span></b></label>
                                                             <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" required="required" value="<?php echo $key->user_phone; ?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for=""><b style="color: black">Alamat <span style="color:red">*</span></b></label>
+                                                            <input type="text" class="form-control" placeholder="Alamat" name="user_alamat" required="required" value="<?php echo $key->user_alamat; ?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for=""><b style="color: black">Umur <span style="color:red">*</span></b></label>
+                                                            <input type="text" class="form-control" placeholder="Umur" name="user_umur" required="required" value="<?php echo $key->user_umur; ?>">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for=""><b style="color: black">Jenis Kelamin <span style="color:red">*</span></b></label>
+                                                            <select name="user_jk" class="form-control" required>
+                                                                <option value="">- Jenis Kelamin -</option>
+                                                                <?php $jk = ['Laki-Laki', 'Perempuan'];
+                                                                foreach ($jk as $keys) { ?>
+                                                                    <option value="<?= $keys ?>" <?php if ($keys ==  $key->user_jk) echo 'selected'; ?>><?= $keys ?></option>
+                                                                <?php } ?>
+                                                            </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for=""><b style="color: black">Group <span style="color:red">*</span></b></label>

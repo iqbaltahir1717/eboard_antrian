@@ -62,12 +62,24 @@
             <!-- Start Form Login -->
             <?php echo form_open("auth/create"); ?>
             <div class="form-group has-feedback">
+                <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" required value="<?= $user_phone ?>">
+            </div>
+            <div class="form-group has-feedback">
                 <?php echo csrf(); ?>
                 <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap" name="user_fullname" required value="<?= $user_fullname; ?>">
             </div>
             <div class="form-group has-feedback">
-                <?php echo csrf(); ?>
-                <input type="text" class="form-control" placeholder="Nomor Telpon" name="user_phone" required value="<?= $user_phone ?>">
+                <input type="text" class="form-control" placeholder="Masukkan Alamat" name="user_alamat" required value="<?= $user_alamat ?>">
+            </div>
+            <div class="form-group has-feedback">
+                <select class="form-control" name="user_jk" required>
+                    <option value="">- Pilih Jenis Kelamin -</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="number" class="form-control" placeholder="Masukkan Umur" name="user_umur" required value="<?= $user_umur ?>">
             </div>
             <div class="form-group has-feedback">
                 <input type="password" class="form-control" placeholder="Masukkan Password" name="user_password" required value="<?= $user_password ?>">

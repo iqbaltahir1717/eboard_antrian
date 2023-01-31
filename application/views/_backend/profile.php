@@ -83,6 +83,30 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label">Alamat</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" placeholder="Alamat" name="user_alamat" value="<?php echo $profile[0]->user_alamat; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Umur</label>
+                                            <div class="col-sm-10">
+                                                <input type="number" class="form-control" placeholder="Umur" name="user_umur" value="<?php echo $profile[0]->user_umur; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Jenis Kelamin</label>
+                                            <div class="col-sm-10">
+                                                <select name="user_jk" class="form-control" required>
+                                                    <option value="">- Jenis Kelamin -</option>
+                                                    <?php $jk = ['Laki-Laki', 'Perempuan'];
+                                                    foreach ($jk as $key) { ?>
+                                                        <option value="<?= $key ?>" <?php if ($key ==  $profile[0]->user_jk) echo 'selected'; ?>><?= $key ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="inputEmail" class="col-sm-2 control-label">Foto</label>
                                             <div class="col-sm-10">
                                                 <input type="file" class="form-control" name="userfile">

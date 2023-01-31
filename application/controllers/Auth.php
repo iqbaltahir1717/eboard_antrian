@@ -90,6 +90,9 @@ class Auth extends CI_Controller
 		$data['password_confirm'] = '';
 		$data['user_fullname']  = '';
 		$data['user_phone']     = '';
+		$data['user_umur']     = '';
+		$data['user_alamat']     = '';
+		$data['user_jk']     = '';
 
 		// TEMPLATE
 		$view         = "_backend/auth/register";
@@ -104,8 +107,9 @@ class Auth extends CI_Controller
 		$data['user_password'] = $this->input->post('user_password');
 		$data['user_fullname']  = $this->input->post('user_fullname');
 		$data['user_phone']     = $this->input->post('user_phone');
-
-
+		$data['user_alamat']     = $this->input->post('user_alamat');
+		$data['user_umur']     = $this->input->post('user_umur');
+		$data['user_jk']     = $this->input->post('user_jk');
 
 		if ($this->input->post('user_password') == $this->input->post('password_confirm')) {
 			// POST
@@ -117,12 +121,10 @@ class Auth extends CI_Controller
 			$data['createtime']     = date('Y-m-d H:i:s');
 			$this->m_user->create($data);
 
-
 			// ALERT
 			$alertStatus  = "success";
 			$alertMessage = "Berhasil menambah data user " . $data['user_name'];
 			getAlert($alertStatus, $alertMessage);
-
 
 			redirect('auth/');
 		} else {
