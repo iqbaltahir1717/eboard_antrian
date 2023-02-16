@@ -274,8 +274,6 @@
                         </div>
                         <div class="box-footer">
 
-
-
                             <!-- PAGINATION -->
                             <div class="float-right"><?php echo $links; ?></div>
 
@@ -285,7 +283,7 @@
                             <?php } else { ?>
                                 <div class="float-left">Tampil 0 <?php echo " dari " . $total_data; ?> Data</div>
                             <?php } ?>
-                            <small>Page rendered in <strong>{elapsed_time}</strong> seconds.</small>
+                            <small>Pages rendered in <strong>{elapsed_time}</strong> seconds.</small>
                         </div>
                     </div>
                 </section>
