@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Jan 2023 pada 09.46
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 8.0.14
+-- Generation Time: Jan 11, 2023 at 03:43 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_antrian`
+-- Table structure for table `tbl_antrian`
 --
 
 CREATE TABLE `tbl_antrian` (
@@ -39,17 +39,18 @@ CREATE TABLE `tbl_antrian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_antrian`
+-- Dumping data for table `tbl_antrian`
 --
 
 INSERT INTO `tbl_antrian` (`antrian_kode`, `antrian_nomor`, `user_id`, `spesialis_id`, `arrival_time`, `service_start_time`, `service_end_time`, `antrian_status`) VALUES
-('FN-2023010217223221', 'A-1', 21, 1, '19:30:32', '00:46:40', '00:45:05', 'start_service'),
-('FN-2023010217223222', 'A-2', 9, 1, '19:31:20', '22:02:12', '00:00:00', 'start_service');
+('FN-2023010217223221', 'A-1', 21, 1, '19:30:32', '17:18:24', '17:19:12', 'end_service'),
+('FN-2023010217223222', 'A-2', 9, 1, '19:31:20', '17:20:10', '00:00:00', 'start_service'),
+('FN-2023011117361211', 'A-3', 11, 1, '17:36:12', '00:00:00', '00:00:00', 'arrival');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_antrian_berjalan`
+-- Table structure for table `tbl_antrian_berjalan`
 --
 
 CREATE TABLE `tbl_antrian_berjalan` (
@@ -59,12 +60,12 @@ CREATE TABLE `tbl_antrian_berjalan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_antrian_berjalan`
+-- Dumping data for table `tbl_antrian_berjalan`
 --
 
 INSERT INTO `tbl_antrian_berjalan` (`antrian_berjalan_id`, `spesialis_id`, `antrian_saat_ini`) VALUES
-(1, 1, '0'),
-(2, 2, '0'),
+(1, 1, '2'),
+(2, 2, '1'),
 (3, 3, '0'),
 (4, 4, '0'),
 (5, 5, '0');
@@ -72,7 +73,7 @@ INSERT INTO `tbl_antrian_berjalan` (`antrian_berjalan_id`, `spesialis_id`, `antr
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_group`
+-- Table structure for table `tbl_group`
 --
 
 CREATE TABLE `tbl_group` (
@@ -82,7 +83,7 @@ CREATE TABLE `tbl_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_group`
+-- Dumping data for table `tbl_group`
 --
 
 INSERT INTO `tbl_group` (`group_id`, `group_name`, `createtime`) VALUES
@@ -94,7 +95,7 @@ INSERT INTO `tbl_group` (`group_id`, `group_name`, `createtime`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_log`
+-- Table structure for table `tbl_log`
 --
 
 CREATE TABLE `tbl_log` (
@@ -107,7 +108,7 @@ CREATE TABLE `tbl_log` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_log`
+-- Dumping data for table `tbl_log`
 --
 
 INSERT INTO `tbl_log` (`log_id`, `log_time`, `log_message`, `log_ipaddress`, `user_id`, `createtime`) VALUES
@@ -244,12 +245,19 @@ INSERT INTO `tbl_log` (`log_id`, `log_time`, `log_message`, `log_ipaddress`, `us
 (131, '2023-01-07 21:06:59', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-07 21:06:59'),
 (132, '2023-01-08 00:50:48', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-08 00:50:48'),
 (133, '2023-01-08 09:14:48', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-08 09:14:48'),
-(134, '2023-01-08 19:29:30', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-08 19:29:30');
+(134, '2023-01-08 19:29:30', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-08 19:29:30'),
+(135, '2023-01-11 17:15:10', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-11 17:15:10'),
+(136, '2023-01-11 17:34:22', 'admin mega melakukan login ke sistem', '::1', 6, '2023-01-11 17:34:22'),
+(137, '2023-01-11 17:34:50', 'yanti melakukan login ke sistem', '::1', 11, '2023-01-11 17:34:50'),
+(138, '2023-01-11 17:36:12', 'Behasil menambah data antrian FN-2023011117361211 dengan nomor antrian A-3', '::1', 11, '2023-01-11 17:36:12'),
+(139, '2023-01-11 17:39:52', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-11 17:39:52'),
+(140, '2023-01-11 17:52:21', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-11 17:52:21'),
+(141, '2023-01-11 22:27:46', 'Super Admin melakukan login ke sistem', '::1', 1, '2023-01-11 22:27:46');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_riwayat_antrian`
+-- Table structure for table `tbl_riwayat_antrian`
 --
 
 CREATE TABLE `tbl_riwayat_antrian` (
@@ -264,32 +272,35 @@ CREATE TABLE `tbl_riwayat_antrian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_riwayat_antrian`
+-- Dumping data for table `tbl_riwayat_antrian`
 --
 
 INSERT INTO `tbl_riwayat_antrian` (`riwayat_antrian_id`, `user_id`, `spesialis_id`, `antrian_nomor`, `arrival_time`, `service_start_time`, `service_end_time`, `createtime`) VALUES
-(1, 19, 1, 'A1', '17:19:00', '18:09:00', '18:15:00', '2022-12-30'),
-(2, 20, 1, 'A2', '17:22:00', '18:15:00', '18:23:00', '2022-12-30'),
-(3, 18, 1, 'A3', '17:23:00', '18:23:00', '18:30:00', '2022-12-30'),
-(4, 27, 1, 'A4', '17:34:00', '18:34:00', '18:38:00', '2022-12-30'),
-(5, 22, 1, 'A5', '17:36:00', '18:38:00', '18:42:00', '2022-12-30'),
-(6, 23, 1, 'A6', '17:36:00', '18:42:00', '18:50:00', '2022-12-30'),
-(7, 24, 1, 'A7', '17:38:00', '18:50:00', '18:54:00', '2022-12-30'),
-(8, 25, 1, 'A8', '17:39:00', '18:54:00', '18:57:00', '2022-12-30'),
-(9, 11, 1, 'A9', '17:39:00', '18:57:00', '19:00:00', '2022-12-30'),
-(10, 12, 1, 'E10', '17:39:00', '19:00:00', '19:02:00', '2022-12-30'),
-(11, 14, 1, 'A11', '17:41:00', '19:02:00', '19:04:00', '2022-12-30'),
-(12, 15, 1, 'A12', '17:42:00', '19:04:00', '19:08:00', '2022-12-30'),
-(13, 16, 1, 'A13', '17:50:00', '19:08:00', '19:11:00', '2022-12-30'),
-(14, 21, 1, 'A14', '17:50:00', '19:11:00', '19:15:00', '2022-12-30'),
-(15, 26, 1, 'A15', '17:55:00', '19:15:00', '19:20:00', '2022-12-30'),
-(16, 17, 1, 'A16', '17:58:00', '19:20:00', '19:25:00', '2022-12-30'),
-(36, 21, 1, 'A1', '19:30:32', '00:45:03', '00:45:05', '2023-01-09');
+(1, 19, 1, 'A1', '17:40:00', '19:00:00', '19:06:00', '2022-12-30'),
+(2, 20, 1, 'A2', '17:46:00', '19:06:00', '19:12:00', '2022-12-30'),
+(3, 18, 1, 'A3', '17:47:00', '19:12:00', '19:18:00', '2022-12-30'),
+(4, 27, 1, 'A4', '17:50:00', '19:18:00', '19:24:00', '2022-12-30'),
+(5, 22, 1, 'A5', '17:59:00', '19:24:00', '19:30:00', '2022-12-30'),
+(6, 23, 1, 'A6', '18:01:00', '19:30:00', '19:36:00', '2022-12-30'),
+(7, 24, 1, 'A7', '18:10:00', '19:36:00', '19:42:00', '2022-12-30'),
+(8, 25, 1, 'A8', '18:30:00', '19:42:00', '19:48:00', '2022-12-30'),
+(9, 11, 1, 'A9', '18:34:00', '19:48:00', '19:54:00', '2022-12-30'),
+(10, 12, 1, 'A10', '18:34:00', '19:54:00', '20:01:00', '2022-12-30'),
+(11, 14, 1, 'A11', '18:34:00', '20:01:00', '20:06:00', '2022-12-30'),
+(12, 15, 1, 'A12', '18:37:00', '20:06:00', '20:12:00', '2022-12-30'),
+(13, 16, 1, 'A13', '18:37:00', '20:12:00', '20:19:00', '2022-12-30'),
+(14, 21, 1, 'A14', '18:43:00', '20:19:00', '20:24:00', '2022-12-30'),
+(15, 26, 1, 'A15', '18:50:00', '20:24:00', '20:30:00', '2022-12-30'),
+(16, 17, 1, 'A16', '18:51:00', '20:30:00', '20:36:00', '2022-12-30'),
+(37, 21, 1, 'A17', '18:53:00', '20:36:00', '20:42:00', '2022-12-30'),
+(38, 30, 1, 'A18', '18:55:00', '20:42:00', '20:47:00', '2022-12-30'),
+(39, 31, 1, 'A19', '18:56:00', '20:47:00', '20:53:00', '2022-12-30'),
+(40, 31, 1, 'A20', '18:59:00', '20:53:00', '21:00:00', '2022-12-30');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_setting`
+-- Table structure for table `tbl_setting`
 --
 
 CREATE TABLE `tbl_setting` (
@@ -313,7 +324,7 @@ CREATE TABLE `tbl_setting` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_setting`
+-- Dumping data for table `tbl_setting`
 --
 
 INSERT INTO `tbl_setting` (`setting_id`, `setting_appname`, `setting_short_appname`, `setting_origin_app`, `setting_owner_name`, `setting_phone`, `setting_email`, `setting_address`, `setting_logo`, `setting_background`, `setting_color`, `setting_layout`, `setting_about`, `setting_max_antrian`, `setting_jam_buka`, `setting_jam_tutup`, `createtime`) VALUES
@@ -322,7 +333,7 @@ INSERT INTO `tbl_setting` (`setting_id`, `setting_appname`, `setting_short_appna
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_spesialis`
+-- Table structure for table `tbl_spesialis`
 --
 
 CREATE TABLE `tbl_spesialis` (
@@ -334,7 +345,7 @@ CREATE TABLE `tbl_spesialis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_spesialis`
+-- Dumping data for table `tbl_spesialis`
 --
 
 INSERT INTO `tbl_spesialis` (`spesialis_id`, `spesialis_nama`, `user_id`, `spesialis_active`, `spesialis_kode_antrian`) VALUES
@@ -347,7 +358,7 @@ INSERT INTO `tbl_spesialis` (`spesialis_id`, `spesialis_nama`, `user_id`, `spesi
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -364,7 +375,7 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_password`, `user_fullname`, `user_photo`, `user_email`, `user_token`, `user_lastlogin`, `group_id`, `createtime`) VALUES
@@ -401,95 +412,95 @@ INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_password`, `user_fullname`
 --
 
 --
--- Indeks untuk tabel `tbl_antrian`
+-- Indexes for table `tbl_antrian`
 --
 ALTER TABLE `tbl_antrian`
   ADD PRIMARY KEY (`antrian_kode`);
 
 --
--- Indeks untuk tabel `tbl_antrian_berjalan`
+-- Indexes for table `tbl_antrian_berjalan`
 --
 ALTER TABLE `tbl_antrian_berjalan`
   ADD PRIMARY KEY (`antrian_berjalan_id`);
 
 --
--- Indeks untuk tabel `tbl_group`
+-- Indexes for table `tbl_group`
 --
 ALTER TABLE `tbl_group`
   ADD PRIMARY KEY (`group_id`);
 
 --
--- Indeks untuk tabel `tbl_log`
+-- Indexes for table `tbl_log`
 --
 ALTER TABLE `tbl_log`
   ADD PRIMARY KEY (`log_id`);
 
 --
--- Indeks untuk tabel `tbl_riwayat_antrian`
+-- Indexes for table `tbl_riwayat_antrian`
 --
 ALTER TABLE `tbl_riwayat_antrian`
   ADD PRIMARY KEY (`riwayat_antrian_id`);
 
 --
--- Indeks untuk tabel `tbl_setting`
+-- Indexes for table `tbl_setting`
 --
 ALTER TABLE `tbl_setting`
   ADD PRIMARY KEY (`setting_id`);
 
 --
--- Indeks untuk tabel `tbl_spesialis`
+-- Indexes for table `tbl_spesialis`
 --
 ALTER TABLE `tbl_spesialis`
   ADD PRIMARY KEY (`spesialis_id`);
 
 --
--- Indeks untuk tabel `tbl_user`
+-- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_antrian_berjalan`
+-- AUTO_INCREMENT for table `tbl_antrian_berjalan`
 --
 ALTER TABLE `tbl_antrian_berjalan`
   MODIFY `antrian_berjalan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_group`
+-- AUTO_INCREMENT for table `tbl_group`
 --
 ALTER TABLE `tbl_group`
   MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_log`
+-- AUTO_INCREMENT for table `tbl_log`
 --
 ALTER TABLE `tbl_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_riwayat_antrian`
+-- AUTO_INCREMENT for table `tbl_riwayat_antrian`
 --
 ALTER TABLE `tbl_riwayat_antrian`
-  MODIFY `riwayat_antrian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `riwayat_antrian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_setting`
+-- AUTO_INCREMENT for table `tbl_setting`
 --
 ALTER TABLE `tbl_setting`
   MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_spesialis`
+-- AUTO_INCREMENT for table `tbl_spesialis`
 --
 ALTER TABLE `tbl_spesialis`
   MODIFY `spesialis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_user`
+-- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
