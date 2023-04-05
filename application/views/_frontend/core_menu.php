@@ -139,14 +139,28 @@
                 </div>
                 <div class="modal-body">
                     <div class="box-card">
-                        <?php echo form_open("eboard/delete") ?>
                         <center>
                             <h1 style="font-size: 120px;"><?= $profile_antrian[0]->antrian_nomor ?></h1>
+                            <p style="font-size: 14px;">Arrival : <?= $profile_antrian[0]->createtime ?>; <?= $profile_antrian[0]->arrival_time ?> WITA<p>
+                            
+                            <!-- Download -->
+                            <?php echo form_open("eboard/print_out") ?>
                             <?php echo csrf(); ?>
                             <input type="hidden" value="<?= $profile_antrian[0]->antrian_kode ?>" name="antrian_kode">
-                            <button type="submit" onclick="return confirm('Apa kamu yakin hapus antrian anda?');" class="btn btn-danger">Hapus</button>
+                            <input type="hidden" value="<?= $profile_antrian[0]->antrian_nomor ?>" name="antrian_kode">
+                            <input type="hidden" value="<?= $profile_antrian[0]->arrival_time ?>" name="antrian_kode">
+                            <input type="hidden" value="<?= $profile_antrian[0]->createtime ?>" name="antrian_kode">
+                            <a href="<?php echo site_url('eboard/print_out') ?>" class="btn btn-block btn-primary mb-2">Download</a>
+                            <?php echo form_close(); ?>
+
+                            <!-- delete -->
+                            <?php echo form_open("eboard/delete") ?>
+                            <?php echo csrf(); ?>
+                            <input type="hidden" value="<?= $profile_antrian[0]->antrian_kode ?>" name="antrian_kode">
+                            <button type="submit" onclick="return confirm('Apa kamu yakin hapus antrian anda?');" class="btn btn-block btn-danger">Hapus</button>
+                            <?php echo form_close(); ?>
                         </center>
-                        <?php echo form_close(); ?>
+                      
 
                     </div>
                 </div>

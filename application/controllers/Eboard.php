@@ -30,6 +30,33 @@ class Eboard extends CI_Controller
 		renderTemplateFront($data, $view, $viewCategory);
 	}
 
+	public function print_out()
+	{
+		// csrfValidate();
+
+		// DATA
+		$data['setting']             = getSetting();
+		$data['spesialis']   = $this->m_spesialis->read('', '', '');
+		$data['antrian']   = $this->m_antrian->read('', '', '');
+		$data['dokter']   = $this->m_user->read_group('', '', '', 4);
+		if ($data['antrian']) {
+			$data['total_antrian'] = count($data['antrian']);
+		} else $data['total_antrian'] = 0;
+		$data['profile'] = $this->m_user->get($this->session->userdata('user_id'));
+		$data['profile_antrian']   = $this->m_antrian->get($this->session->userdata('user_id'));
+
+
+		$data['antrian_kode'] = $this->session->userdata('antrian_kode');
+        $data['antrian_nomor'] = $this->input->post('antrian_nomor');
+        $data['arrival_time'] = $this->input->post('arrival_time');
+        $data['createtime'] = $this->input->post('createtime');
+
+		// TEMPLATE
+		$view         = "_frontend/print_out";
+		$viewCategory = "single";
+		renderTemplateFront($data, $view, $viewCategory);
+	}
+
 	public function realtime()
 	{
 		header("Access-Control-Allow-Origin: *");

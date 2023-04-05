@@ -234,10 +234,6 @@ class Kontrol extends CI_Controller
 								getAlert($alertStatus, $alertMessage);
 								redirect('admin/kontrol');
 							}
-							if($data3['antrian_status']  == 'end_service'){
-								$this->m_antrian->delete($data3);
-							}
-							else
 							$this->m_antrian->update($data3);
 							foreach ($datas['antrian'] as $key) {
 								$nomor_antrian = $this->input->post('antrian_saat_ini');
