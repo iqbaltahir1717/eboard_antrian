@@ -13,10 +13,20 @@ class Eboard extends CI_Controller
 
 	public function index()
 	{
+
+		
 		// DATA
 		$data['setting']             = getSetting();
 		$data['spesialis']   = $this->m_spesialis->read('', '', '');
 		$data['antrian']   = $this->m_antrian->read('', '', '');
+		if($data['antrian'] ){
+			foreach($data['antrian'] as $a){
+				if($a->createtime != date('Y-m-d')){
+					$this->m_antrian->delete_all();
+					redirect('eboard');
+				}
+			}
+		}
 		$data['dokter']   = $this->m_user->read_group('', '', '', 4);
 		if ($data['antrian']) {
 			$data['total_antrian'] = count($data['antrian']);

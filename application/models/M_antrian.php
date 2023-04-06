@@ -15,7 +15,7 @@ class M_antrian extends CI_Model
         $this->db->from('tbl_antrian a');
         $this->db->join('tbl_user b', 'a.user_id=b.user_id', 'LEFT');
         $this->db->join('tbl_spesialis c', 'a.spesialis_id=c.spesialis_id', 'LEFT');
-        $this->db->where('a.createtime =', $date);
+        // $this->db->where('a.createtime =', $date);
         $this->db->order_by('a.antrian_nomor', 'ASC');
 
         if ($key != '') {
@@ -79,6 +79,14 @@ class M_antrian extends CI_Model
     {
         $this->db->delete('tbl_antrian', array('antrian_kode' => $data['antrian_kode']));
     }
+
+    public function delete_all()
+    {
+        // $this->db->delete('tbl_antrian', array('antrian_nomor' => $data['antrian_nomor']));
+        $this->db->truncate('tbl_antrian');
+    }
+
+
 
     // public function get($id)
     // {

@@ -4,7 +4,6 @@
         <div class="col-lg-2 box-item box-item-color">
             <h3 id="antrian<?= $s->spesialis_id ?>"><?php echo $s->spesialis_kode_antrian . '-' . $s->antrian_saat_ini; ?></h3>
             <h4>Antrian Saat Ini</h4>
-            <button onclick="notifyMe()">Notify me!</button>
         </div>
     <?php } ?>
     
@@ -238,6 +237,8 @@
                     antrian_nomor<?= $s->spesialis_id ?> = data[<?= $i ?>]['antrian_saat_ini'];
                 
                     <?php
+
+                    if($profile_antrian) {
                     // $antrian = $_COOKIE['antrian'];
                     $pecah_nomor_antrian = explode('-', $profile_antrian[0]->antrian_nomor );
                     $kode_nomor_antrian = $pecah_nomor_antrian[0];
@@ -256,7 +257,7 @@
                                 window.open('<?php echo base_url().'eboard' ?>');
                                 };
                             }
-                    <?php }} ?>
+                    <?php }} }?>
                 <?php $i++;
                 } ?>
 

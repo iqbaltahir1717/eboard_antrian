@@ -31,10 +31,23 @@ class Kontrol extends CI_Controller
 		if ($data['antrian']) {
 			$data['total_antrian'] = count($data['antrian']);
 		} else $data['total_antrian'] = 0;
+
+		// csrfValidate();
+		// POST
+		if($data['antrian'] ){
+			foreach($data['antrian'] as $a){
+				if($a->createtime != date('Y-m-d')){
+					$this->m_antrian->delete_all();
+					redirect('eboard');
+				}
+			}
+		}
+		
 		// echo "<pre>";
 		// print_r($data['antrian']);
 		// echo "</pre>";
 		// die;
+		
 		// TEMPLATE
 		$view         = "_backend/antrian_kontrol";
 		$viewCategory = "all";
