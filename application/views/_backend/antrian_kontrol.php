@@ -43,7 +43,8 @@
                         $no = 1;
                         foreach ($antrian as $key) {
                     ?>
-                            <tr>
+                            <?php if($key->antrian_status != 'end_service') { ?>
+                                <tr>
                                 <td><b><?php echo str_replace('-', '', $key->antrian_nomor); ?></b></td>
                                 <td><?php echo $key->user_fullname; ?></td>
                                 <td><?php echo $key->spesialis_nama; ?></td>
@@ -82,6 +83,7 @@
                                     </div>
                                 </div>
                             </div>
+                                <?php } ?>
                     <?php
                             $no++;
                         }
