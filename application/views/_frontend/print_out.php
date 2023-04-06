@@ -35,8 +35,8 @@
         <p>email: <?php echo $setting[0]->setting_email; ?></p>
         <hr>
 
-        <h1><?= $antrian_kode ?>A-1</h1>
-        <p>Arrival Time : 2023-03-04; 12:12:02 WITA</p>
+        <h1><?= $profile_antrian[0]->antrian_nomor ?></h1>
+        <p>Arrival Time : <?= $profile_antrian[0]->createtime ?>; <?= $profile_antrian[0]->arrival_time ?> WITA</p>
         <p>Silahkan menunggu giliran antrian</p>
         
     </center>
