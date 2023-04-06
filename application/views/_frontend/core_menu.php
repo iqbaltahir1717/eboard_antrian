@@ -147,9 +147,9 @@
                             <?php echo form_open("eboard/print_out") ?>
                             <?php echo csrf(); ?>
                             <input type="hidden" value="<?= $profile_antrian[0]->antrian_kode ?>" name="antrian_kode">
-                            <input type="hidden" value="<?= $profile_antrian[0]->antrian_nomor ?>" name="antrian_kode">
-                            <input type="hidden" value="<?= $profile_antrian[0]->arrival_time ?>" name="antrian_kode">
-                            <input type="hidden" value="<?= $profile_antrian[0]->createtime ?>" name="antrian_kode">
+                            <input type="hidden" value="<?= $profile_antrian[0]->antrian_nomor ?>" name="antrian_nomor">
+                            <input type="hidden" value="<?= $profile_antrian[0]->arrival_time ?>" name="arrival_time">
+                            <input type="hidden" value="<?= $profile_antrian[0]->createtime ?>" name="createtime">
                             <a href="<?php echo site_url('eboard/print_out') ?>" class="btn btn-block btn-primary mb-2">Download</a>
                             <?php echo form_close(); ?>
 
