@@ -99,7 +99,7 @@
                 <div class="box-footer">
                     <!-- COUNT DATA -->
                     <?php if ($antrian) { ?>
-                        <div class="float-left">Jumlah yang sedang dalam antrian <?php echo ($no - 1); ?> Pasien
+                        <!-- <div class="float-left">Jumlah yang sedang dalam antrian <?php echo ($no - 1); ?> Pasien -->
                         <?php } else { ?>
                             <div class="float-left">Tampil 0 <?php echo " dari " . $total_antrian; ?> Data</div>
                         <?php } ?> <br>
