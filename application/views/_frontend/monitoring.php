@@ -226,6 +226,7 @@
 </script>
 
 <script>
+   
     $(document).ready(function() {
         function antrian() {
             url = "<?php echo base_url(); ?>eboard/realtime";
@@ -246,16 +247,69 @@
                   
                     if($kode_nomor_antrian == $s->spesialis_kode_antrian ) {
                         if(($nomor_antrian - 6) < $s->antrian_saat_ini && $nomor_antrian > $s->antrian_saat_ini) {?>
-                            if (Notification.permission !== 'granted')
+                             if (Notification.permission !== 'granted')
                             Notification.requestPermission();
                             else {
-                                var notification = new Notification('Klinik Mono Valensi', {
-                                    icon: '<?php echo base_url() ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>',
-                                    body: 'Hai, nomor antrian kamu sudah dekat!!!',
+                                if ('serviceWorker' in navigator) {
+                                    // Register the service worker
+                                    navigator.serviceWorker.register('service-worker.js')
+                                        .then(function(registration) {
+                                        console.log('Service worker registered: ', registration);
+
+                                        // Request permission for notifications
+                                        Notification.requestPermission().then(function(permission) {
+                                            if (permission === 'granted') {
+                                            console.log('Notification permission granted.');
+                                            
+                                            // Display a notification
+                                            registration.showNotification('Hello, World!');
+                                            } else {
+                                            console.log('Notification permission denied.');
+                                            }
+                                        });
+                                        })
+                                        .catch(function(error) {
+                                        console.log('Service worker registration failed: ', error);
+                                        });
+                                    }
+
+                                    self.addEventListener('fetch', function(event) {
+                                // Respond with a simple message for all fetch requests
+                                event.respondWith(new Response('Hello from the service worker!'));
                                 });
-                                notification.onclick = function() {
-                                window.open('<?php echo base_url().'eboard' ?>');
-                                };
+
+
+
+                                // if ('serviceWorker' in navigator) {
+                                // navigator.serviceWorker.register('<?php echo base_url() ?>assets/core-front/js/service-worker.js')
+                                //     .then(registration => {
+                                //     console.log('Service worker registered:', registration);
+                                //     // Listen for updates to the service worker
+                                //     registration.onupdatefound = () => {
+                                //         // Notify the user of the new version
+                                //         const notification = new Notification('New version available!', {
+                                //         body: 'Click here to update.',
+                                //         icon: '<?php echo base_url() ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>'
+                                //         });
+                                        
+                                //         // Reload the page if the user clicks the notification
+                                //         notification.onclick = () => {
+                                //         location.reload();
+                                //         }
+                                //     }
+                                //     })
+                                //     .catch(error => {
+                                //     console.log('Service worker registration failed:', error);
+                                //     });
+                                // }
+                                
+                                // var notification = new Notification('Klinik Mono Valensi', {
+                                //     icon: '<?php echo base_url() ?>assets/core-images/<?php echo $setting[0]->setting_logo; ?>',
+                                //     body: 'Hai, nomor antrian kamu sudah dekat!!!',
+                                // });
+                                // notification.onclick = function() {
+                                // window.open('<?php echo base_url().'eboard' ?>');
+                                // };
                             }
                     <?php }} }?>
                 <?php $i++;
